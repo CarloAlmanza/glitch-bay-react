@@ -6,7 +6,7 @@ function ProductCard({ product, displayed }) {
             <div className="cyber-card w-100"> {/* 2. w-100 (e la tua classe cyberpunk) */}
                 <div className="card-body d-flex flex-column"> {/* 3. d-flex e flex-column sul body */}
 
-                    <img src={`http://localhost:3000/img/${product.img}`} alt="product-img" className="img-fluid mb-3" />
+                    <img src={product.img} alt="product-img" className="img-fluid mb-3" />
 
                     <h5 className="card-title p-font">{product.name}</h5>
 
@@ -20,7 +20,7 @@ function ProductCard({ product, displayed }) {
 
                     {displayed !== 'product-detail' ? 
                     <Link to={`/products/${product.slug}`} className="btn btn-primary mt-3 p-font">Esplora</Link>
-                     : null}
+                    : null}
                     
 
                 </div>
