@@ -64,8 +64,9 @@
   background-color: #000000;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; /* O 'cover' a seconda di come vuoi visualizzare il soggetto */
-  
+  background-size: contain;
+  /* O 'cover' a seconda di come vuoi visualizzare il soggetto */
+
   /* Centra il contenuto del main (testi, bottoni, ecc.) senza romperlo */
   display: flex;
   flex-direction: column;
@@ -73,12 +74,13 @@
   justify-content: center;
 }
 
-.section-1 { 
-  background-image: url('/imgs/img_background_glitch/background_img_stars.avif'); 
+.section-1 {
+  background-image: url('/imgs/img_background_glitch/background_img_stars.avif');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 100vh; /* O l'altezza che preferisci */
+  height: 100vh;
+  /* O l'altezza che preferisci */
 
   /* LA SFUMATURA: Parte visibile (nero opaco) e diventa trasparente al fondo */
   -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
@@ -95,33 +97,34 @@
 }
 
 
-.section-2 { 
+.section-2 {
   margin-top: 100px;
-  background-image: url('../public/imgs/img_background_glitch/bg_img_lamp.jpg'); 
+  background-image: url('../public/imgs/img_background_glitch/bg_img_lamp.jpg');
   background-position: right;
   background-size: contain;
-  
+
   /* Evita che l'immagine si ripeta se lo schermo è troppo grande */
   background-repeat: no-repeat;
 }
 
-.section-3 { 
-  background-image: url('../public/imgs/img_background_glitch/bg_img_moon.jpg'); 
+.section-3 {
+  background-image: url('../public/imgs/img_background_glitch/bg_img_moon.jpg');
   background-size: contain;
   background-position: left;
-  
+
   /* Evita che l'immagine si ripeta se lo schermo è troppo grande */
   background-repeat: no-repeat;
 }
-.section-4 { 
-  background-image: url('/imgs/img_background_glitch/bg_img_neonlamp.png'); 
-  
+
+.section-4 {
+  background-image: url('/imgs/img_background_glitch/bg_img_neonlamp.png');
+
   /* L'equivalente di object-fit: cover per gli sfondi CSS */
   background-size: contain;
-  
+
   /* Centra l'immagine in modo che se viene tagliata, il centro resta visibile */
   background-position: center;
-  
+
   /* Evita che l'immagine si ripeta se lo schermo è troppo grande */
   background-repeat: no-repeat;
 
@@ -185,15 +188,18 @@
 
 .cyber-card {
   text-align: center;
-  background-image: linear-gradient(to bottom, rgba(59, 21, 183, 0.768) 10%, rgba(82, 27, 141, 0.5) 70%, transparent 100%); /* Grigio scuro per staccare dallo sfondo */
-  border: 1px solid #000000; /* Bordo iniziale Ciano Elettrico */
-  border-radius: 10px; /* Tagli netti, evita angoli troppo arrotondati */
+  background-image: linear-gradient(to bottom, rgba(59, 21, 183, 0.768) 10%, rgba(82, 27, 141, 0.5) 70%, transparent 100%);
+  /* Grigio scuro per staccare dallo sfondo */
+  border: 1px solid #000000;
+  /* Bordo iniziale Ciano Elettrico */
+  border-radius: 10px;
+  /* Tagli netti, evita angoli troppo arrotondati */
   padding: 20px;
   color: #fff;
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease-in-out;
-  
+
   /* Neon leggero di base (Ciano) */
   box-shadow: 0px 1px 8px 3px rgba(0, 240, 255, 0.2), inset 0 0 5px rgba(0, 240, 255, 0.1);
 }
@@ -202,6 +208,84 @@
 .cyber-card:hover {
   transform: translateY(-5px);
   /* Cambia colore virando sul Magenta e intensifica il neon */
-  border-color: #00ffb7; 
+  border-color: #00ffb7;
   box-shadow: 0px 5px 15px rgba(4, 129, 93, 0.4), inset 0 0 10px 5px rgba(2, 80, 66, 0.2);
+}
+
+
+
+
+/* Products Details */
+.cyber-detail-card {
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.cyber-img {
+  max-height: 700px;
+  object-fit: contain;
+  transition: .3s;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 20px
+}
+
+.cyber-img:hover {
+  transform: scale(1.05);
+}
+
+.cyber-title {
+  color: #00ffff;
+  font-size: 3rem;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.cyber-price {
+  color: #ff00ff;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.cyber-line {
+  height: 2px;
+  background: linear-gradient(90deg,
+      #00ffff,
+      #ff00ff);
+  margin-top: 20px;
+}
+
+.cyber-description {
+  color: #d1d5db;
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+.btn-shop-text {
+  color: #e1ecec;
+  font-size: 1.2rem;
+}
+
+.cyber-btn {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 20px #00ffff;
+  border: none;
+  font-weight: bold;
+  padding: 12px 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.cyber-btn:hover {
+  box-shadow: 0 0 20px #ff00ff;
+  text-shadow: 0 0 10px #00ffff;
+  ;
+}
+
+.container-product-detail {
+  background: linear-gradient(180deg,
+      #000000 0%,
+      #050505 25%,
+      #0f172a 70%,
+      #111827 100%);
 }
