@@ -11,13 +11,15 @@ function ProductCard({ product, displayed }) {
                         <img src={product.img} alt="product-img" className="img-fluid mb-3 product-img" />
 
                         <h5 className="card-title p-font prod-name-wrapper">{product.name}</h5>
-                        <div className="price-wrapper p-font mt-auto mb-2">
+                        <div className="price-wrapper p-font mt-auto mb-2 d-flex justify-content-center">
                             {hasDiscount ? (
-                                <>
-                                    <h3 className="text-decoration-line-through">
+                                <>  
+                                    
+                                    <h5 className="text-decoration-line-through cut-price">
                                         ${product.price}
-                                    </h3>
+                                    </h5>
                                     <h3>${product.discounted_price}</h3>
+                                    <div className="empty-box"></div>
                                 </>
                             ) : (
                                 <h3>${product.price}</h3>

@@ -230,6 +230,11 @@
   box-shadow: 0px 5px 15px rgba(4, 129, 93, 0.4), inset 0 0 10px 5px rgba(2, 80, 66, 0.2);
 }
 
+.cut-price {
+  opacity: 0.7;
+  translate: 0 20%;
+}
+
 .product-img {
   border-radius: 10px;
 }
@@ -245,6 +250,11 @@
   margin-top: auto;
   margin-bottom: 15px;
   text-shadow: 0 0 10px #7b00ff;
+  gap: 4px;
+}
+
+.empty-box {
+  width: 20%;
 }
 
 /* Rimosso absolute: ora si allinea perfettamente grazie al flexbox */
