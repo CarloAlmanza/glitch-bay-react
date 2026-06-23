@@ -51,57 +51,59 @@ function OurProducts() {
     }, [products, searchQuery, selectedCategory, sortOrder]);
 
     return (
-        <main className="products-main container py-5">
-            {/* Barra dei Controlli con Grid di Bootstrap */}
-            <section className="row g-3 justify-content-center mb-5 cyber-controls-bar">
+        <div className="products-page">
+            <main className="products-main container py-5">
+                {/* Barra dei Controlli con Grid di Bootstrap */}
+                <section className="row g-3 justify-content-center mb-5 cyber-controls-bar">
 
-                {/* Input di Ricerca */}
-                <div className="col-12 col-md-5">
-                    <div className="input-group">
-                        <span className="input-group-text cyber-addon">🔍</span>
-                        <input
-                            type="text"
-                            placeholder="Cerca hardware..."
-                            value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
-                            className="form-control cyber-input p-font"
-                        />
+                    {/* Input di Ricerca */}
+                    <div className="col-12 col-md-5">
+                        <div className="input-group">
+                            <span className="input-group-text cyber-addon">🔍</span>
+                            <input
+                                type="text"
+                                placeholder="Cerca hardware..."
+                                value={searchQuery}
+                                onChange={(e) => setSearchQuery(e.target.value)}
+                                className="form-control cyber-input p-font"
+                            />
+                        </div>
                     </div>
-                </div>
 
-                {/* Select Categoria */}
-                <div className="col-6 col-md-3">
-                    <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="form-select cyber-select p-font"
-                    >
-                        <option value="">Tutte le categorie</option>
-                        {categories.map((cat) => (
-                            <option key={cat} value={cat}>
-                                {cat}
-                            </option>
-                        ))}
-                    </select>
-                </div>
+                    {/* Select Categoria */}
+                    <div className="col-6 col-md-3">
+                        <select
+                            value={selectedCategory}
+                            onChange={(e) => setSelectedCategory(e.target.value)}
+                            className="form-select cyber-select p-font"
+                        >
+                            <option value="">Tutte le categorie</option>
+                            {categories.map((cat) => (
+                                <option key={cat} value={cat}>
+                                    {cat}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
 
-                {/* Select Ordinamento Prezzo */}
-                <div className="col-6 col-md-3">
-                    <select
-                        value={sortOrder}
-                        onChange={(e) => setSortOrder(e.target.value)}
-                        className="form-select cyber-select p-font"
-                    >
-                        <option value="">Ordina per...</option>
-                        <option value="asc">Prezzo: Crescente</option>
-                        <option value="desc">Prezzo: Decrescente</option>
-                    </select>
-                </div>
-            </section>
+                    {/* Select Ordinamento Prezzo */}
+                    <div className="col-6 col-md-3">
+                        <select
+                            value={sortOrder}
+                            onChange={(e) => setSortOrder(e.target.value)}
+                            className="form-select cyber-select p-font"
+                        >
+                            <option value="">Ordina per...</option>
+                            <option value="asc">Prezzo: Crescente</option>
+                            <option value="desc">Prezzo: Decrescente</option>
+                        </select>
+                    </div>
+                </section>
 
-            {/* Lista Prodotti Filtrata */}
-            <ProductList products={filteredAndSortedProducts} displayed={'product-page'} />
-        </main>
+                {/* Lista Prodotti Filtrata */}
+                <ProductList products={filteredAndSortedProducts} displayed={'product-page'} />
+            </main>
+        </div>
     );
 }
 

@@ -182,6 +182,10 @@
   padding: 0 20px;
 }
 
+.products-page {
+  background-image: url('/imgs/img_background_glitch/background_img_stars.avif');
+}
+
 /* .products-wrapper {
   gap: 20px;
 } */
