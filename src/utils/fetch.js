@@ -32,6 +32,22 @@ async function fetchFive() {
     }
 };
 
+async function fetchTopSeller() {
+    try {
+        const response = await fetch(`http://localhost:3000/products/topseller`);
+
+        if (!response.ok) {
+            throw new Error('Errore di comunicazione col server');
+        }
+
+        const data = await response.json();
+        return data.result;
+    } catch (error) {
+        console.error('Errore', error);
+        return null
+    }
+};
+
 async function fetchSingle(slug) {
     
     
@@ -50,4 +66,4 @@ async function fetchSingle(slug) {
     }
 };
 
-export { fetchAll, fetchFive, fetchSingle };
+export { fetchAll, fetchFive, fetchTopSeller, fetchSingle };
