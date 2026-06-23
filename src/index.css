@@ -217,21 +217,17 @@
 
 /* Products Details */
 .cyber-detail-card {
-  background: rgba(15, 15, 25, 0.9);
-  border: 2px solid #00ffff;
   border-radius: 20px;
   padding: 40px;
-  box-shadow:
-    0 0 10px #00ffff,
-    0 0 30px #00ffff33;
 }
 
 .cyber-img {
-  max-height: 500px;
+  max-height: 700px;
   object-fit: contain;
   transition: .3s;
-  border-radius: 10px;
+  border-radius: 30px;
   cursor: pointer;
+  padding: 20px
 }
 
 .cyber-img:hover {
@@ -260,7 +256,7 @@
 
 .cyber-description {
   color: #d1d5db;
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   line-height: 1.8;
 }
 
@@ -284,4 +280,12 @@
   box-shadow: 0 0 20px #ff00ff;
   text-shadow: 0 0 10px #00ffff;
   ;
+}
+
+.container-product-detail {
+  background: linear-gradient(180deg,
+      #000000 0%,
+      #050505 25%,
+      #0f172a 70%,
+      #111827 100%);
 }

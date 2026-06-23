@@ -14,7 +14,7 @@ function ProductDetail() {
 
 
     return (
-        <div className="container py-5">
+        <div className="container-product-detail py-5">
             <div className="cyber-detail-card">
                 <div className="row align-items-center">
                     <div className="col-lg-6 text-center">
@@ -37,6 +37,9 @@ function ProductDetail() {
                         </p>
                         <button className="btn cyber-btn mt-4">
                             <p className="btn-shop-text">Aggiungi al carrello</p>
+                        </button>
+                        <button className="btn cyber-btn mt-4 ms-3">
+                            <p className="btn-shop-text">Aggiungi alla wishlist</p>
                         </button>
                     </div>
 
