@@ -259,14 +259,16 @@
 
 /* Rimosso absolute: ora si allinea perfettamente grazie al flexbox */
 .explore-btn {
-  align-self: flex-end; /* Spinge il bottone a destra se la card è flex */
+  align-self: flex-end;
+  /* Spinge il bottone a destra se la card è flex */
   width: 20%;
   color: white;
   background-color: rgba(152, 255, 221, 0.837) !important;
-  border: none; /* Rimuove i bordi standard di Bootstrap */
+  border: none;
+  /* Rimuove i bordi standard di Bootstrap */
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
-  
+
   /* Centra perfettamente l'icona di react-bootstrap dentro il bottone */
   display: inline-flex;
   justify-content: center;
@@ -275,22 +277,25 @@
 
 /* Stato base dell'icona (il tuo componente react-bootstrap) */
 .explore-eye {
-  color: #120632; /* Un colore scuro per contrastare con il fondo chiaro della base */
+  color: #120632;
+  /* Un colore scuro per contrastare con il fondo chiaro della base */
   translate: 0 -10%;
   transition: all 0.4s ease-in-out;
 }
 
 /* Hover sul BOTTONE -> Cambia il BOTTONE */
 .explore-btn:hover {
-  background-color: rgba(126, 236, 251, 0.837) !important; /* Forza il cambio rispetto all'important sopra */
+  background-color: rgba(126, 236, 251, 0.837) !important;
+  /* Forza il cambio rispetto all'important sopra */
   border-color: #b400d4;
   box-shadow: 0 0 15px #b400d4;
 }
 
 /* Hover sul BOTTONE -> Cambia l'ICONA interna */
 .explore-btn:hover .explore-eye {
-  color: #ff00a6d2; /* Ciano Neon: contrasta da dio con lo sfondo magenta del bottone! */
-  
+  color: #ff00a6d2;
+  /* Ciano Neon: contrasta da dio con lo sfondo magenta del bottone! */
+
   /* Applica il doppio drop-shadow direttamente all'elemento SVG generato dal componente */
   filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
 }
@@ -426,6 +431,23 @@
 /* Carousel */
 
 .side-card {
-    opacity: 0.7;
-    transform: scale(0.9);
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+.carousel-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.carousel-inner>div>div {
+  min-width: 300px;
+  max-width: 400px;
+  flex: 1 1 300px;
 }

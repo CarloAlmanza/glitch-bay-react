@@ -26,9 +26,9 @@ function ProductCard({ product, displayed }) {
                         {hasDiscount ? (
                             <>
                                 <h5 className="text-decoration-line-through cut-price mb-0">
-                                    ${product.price}
+                                    {product.price}€
                                 </h5>
-                                <h3 className="mb-0 text-danger">${product.discounted_price}</h3>
+                                <h3 className="mb-0 text-danger">{product.discounted_price}€</h3>
                             </>
                         ) : (
                             <h3 className="mb-0">${product.price}</h3>
