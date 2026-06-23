@@ -5,22 +5,23 @@ import OurProducts from './components/pages/OurProducts.jsx';
 import ProductDetail from './components/pages/ProductDetail.jsx';
 import NotFound from './components/pages/NotFound.jsx';
 import ScrollReset from './components/ScrollReset.jsx';
-
-
+import { CartProvider } from './context/CartContext.jsx';
 
 function App() {
   return (
-    <BrowserRouter>
-      <ScrollReset />
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="products/:slug" element={<ProductDetail />} />
-          <Route path="products" element={<OurProducts />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <CartProvider>
+      <BrowserRouter>
+        <ScrollReset />
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="products/:slug" element={<ProductDetail />} />
+            <Route path="products" element={<OurProducts />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

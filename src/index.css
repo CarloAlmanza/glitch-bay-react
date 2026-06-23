@@ -478,3 +478,20 @@
   opacity: 0.7;
   transform: scale(0.9);
 }
+
+.carousel-inner {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.carousel-inner>div>div {
+  min-width: 300px;
+  max-width: 400px;
+  flex: 1 1 300px;
+}
