@@ -34,7 +34,7 @@ function ProductCard({ product, displayed }) {
                                 <h3 className="">{product.discounted_price}€</h3>
                             </div>
                         ) : (
-                            <h3 className="">${product.price}</h3>
+                            <h3 className="">{product.price}€</h3>
                         )}
                     </div>
                 </Link>
