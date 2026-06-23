@@ -36,7 +36,7 @@ function ProductCard({ product, displayed }) {
                                 <div className="empty-box"></div> {/*NECESSARIO: NON TOCCARE*/}
                             </>
                         ) : (
-                            <h3 className="">${product.price}</h3>
+                            <h3 className="">{product.price}€</h3>
                         )}
                     </div>
                 </Link>
