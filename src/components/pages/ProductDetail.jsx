@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ProductCard from "../ProductCard.jsx";
 
 function ProductDetail() {
+    
     const [product, setProduct] = useState([]);
     const { slug } = useParams();
     useEffect(() => {
@@ -11,7 +12,7 @@ function ProductDetail() {
             setProduct(product);
         })
     }, []);
-
+    const hasDiscount = product.discounted_price && product.discounted_price !== product.price;
 
     return (
         <div className="container-product-detail py-5">
@@ -28,9 +29,20 @@ function ProductDetail() {
                         <h1 className="cyber-title detail-font">
                             {product.name}
                         </h1>
-                        <h2 className="cyber-price mt-4 p-font">
-                            ${product.price}
-                        </h2>
+                        <div className="cyber-price mt-4 p-font">
+                            {hasDiscount ? (
+                                <>  
+                                    
+                                    <h5 className="text-decoration-line-through cut-price">
+                                        ${product.price}
+                                    </h5>
+                                    <h3>${product.discounted_price}</h3>
+                                    <div className="empty-box"></div>
+                                </>
+                            ) : (
+                                <h3>${product.price}</h3>
+                            )}
+                        </div>
                         <div className="cyber-line"></div>
                         <p className="cyber-description mt-4 p-font">
                             {product.description}
