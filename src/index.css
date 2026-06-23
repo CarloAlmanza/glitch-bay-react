@@ -182,18 +182,32 @@
   padding: 0 20px;
 }
 
+.products-page {
+  background-image: url('/imgs/img_background_glitch/background_img_stars.avif');
+}
+
 /* .products-wrapper {
   gap: 20px;
 } */
 
 .cyber-card {
   text-align: center;
+
   background-image: linear-gradient(to bottom, rgba(59, 21, 183, 0.607) 10%, rgba(82, 27, 141, 0.388) 70%, transparent 100%);
   border: 1px solid #000000;
   border-radius: 10px;
   padding: 13px;
+
+  background-image: linear-gradient(to bottom, rgba(59, 21, 183, 0.768) 10%, rgba(82, 27, 141, 0.5) 70%, transparent 100%);
+  /* Grigio scuro per staccare dallo sfondo */
+  border: 1px solid #000000;
+  /* Bordo iniziale Ciano Elettrico */
+  border-radius: 10px;
   color: #fff;
   transition: all 0.3s ease-in-out;
+
+
+  /* Neon leggero di base (Ciano) */
   box-shadow: 0px 1px 8px 3px rgba(0, 240, 255, 0.2), inset 0 0 5px rgba(0, 240, 255, 0.1);
 
   /* ABILITA FLEXBOX SULLA CARD */
@@ -261,4 +275,132 @@
   
   /* Applica il doppio drop-shadow direttamente all'elemento SVG generato dal componente */
   filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
+
+
+
+/* Products Details */
+.cyber-detail-card {
+  border-radius: 20px;
+  padding: 40px;
+}
+
+.cyber-img {
+  max-height: 700px;
+  object-fit: contain;
+  transition: .3s;
+  border-radius: 30px;
+  cursor: pointer;
+  padding: 20px
+}
+
+.cyber-img:hover {
+  transform: scale(1.05);
+}
+
+.cyber-title {
+  color: #00ffff;
+  font-size: 3rem;
+  text-shadow: 0 0 10px #00ffff;
+}
+
+.cyber-price {
+  color: #ff00ff;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px #ff00ff;
+}
+
+.cyber-line {
+  height: 2px;
+  background: linear-gradient(90deg,
+      #00ffff,
+      #ff00ff);
+  margin-top: 20px;
+}
+
+.cyber-description {
+  color: #d1d5db;
+  font-size: 1.4rem;
+  line-height: 1.8;
+}
+
+.btn-shop-text {
+  color: #e1ecec;
+  font-size: 1.2rem;
+}
+
+.cyber-btn {
+  background: #00ffff;
+  color: black;
+  box-shadow: 0 0 20px #00ffff;
+  border: none;
+  font-weight: bold;
+  padding: 12px 20px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.cyber-btn:hover {
+  box-shadow: 0 0 20px #ff00ff;
+  text-shadow: 0 0 10px #00ffff;
+  ;
+}
+
+.container-product-detail {
+  background: linear-gradient(180deg,
+      #000000 0%,
+      #050505 25%,
+      #0f172a 70%,
+      #111827 100%);
+}
+
+/* ==========================================================================
+   CYBERPUNK CONTROLS (Bootstrap Customization)
+   ========================================================================== */
+
+/* Wrapper e Reset dei testi Bootstrap per la barra dei filtri */
+.cyber-controls-bar .cyber-input,
+.cyber-controls-bar .cyber-select,
+.cyber-controls-bar .cyber-addon {
+  background-color: #0b0b0e;
+  /* Grigio quasi nero tech */
+  border: 1px solid rgba(59, 21, 183, 0.6);
+  /* Bordo viola semi-trasparente */
+  color: #ffffff;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Icona di ricerca del gruppo di input */
+.cyber-controls-bar .cyber-addon {
+  border-right: none;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.cyber-controls-bar .cyber-input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+/* Effetto Focus (Quando l'utente clicca per scrivere o selezionare) */
+.cyber-controls-bar .cyber-input:focus,
+.cyber-controls-bar .cyber-select:focus {
+  background-color: #0d0d13;
+  color: #fff;
+  border-color: #00f0ff;
+  /* Cambia in Ciano Elettrico come le tue card di base */
+  outline: 0;
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+  /* Glow neon ciano */
+}
+
+/* Correzione per la freccia delle select nei browser moderni */
+.cyber-controls-bar .cyber-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2300f0ff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* Stile per le opzioni interne alla select (evita che rimangano bianche su sistemi operativi specifici) */
+.cyber-select option {
+  background: #0b0b0e;
+  color: #fff;
 }
