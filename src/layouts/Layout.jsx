@@ -22,8 +22,8 @@ function Layout() {
 
                     {/* Menu Desktop */}
                     <div className="d-none d-lg-flex gap-4 align-items-center">
-                        <Link to="/products" className="text-black text-decoration-none fw-bold">Our Products</Link>
-                        <Link to="/aboutus" className="text-black text-decoration-none fw-bold">About Us</Link>
+                        <Link to="/products" className="text-white text-decoration-none fw-bold">I Nostri Prodotti</Link>
+                        <Link to="/aboutus" className="text-white text-decoration-none fw-bold">404</Link>
 
                         {/* Pulsante Carrello Desktop */}
                         <button

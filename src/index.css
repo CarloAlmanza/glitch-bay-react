@@ -45,12 +45,11 @@
 /* Header */
 .header {
   width: 100%;
-  height: 30vh;
-  color: white;
+  height: 15vh;
   background: linear-gradient(180deg,
       #16213e 0%,
-      #0f172a 50%,
-      #050816 100%);
+      #071129 50%,
+      #000000 100%);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -102,7 +101,8 @@
   max-width: 200px;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 0 10px #00ffff) drop-shadow(0 0 20px #00ffff) drop-shadow(0 0 40px rgba(0, 255, 255, 0.8));
+  filter: invert(1);
+  filter: invert(1) drop-shadow(0 0 10px #00ffff); 
 }
 
 /* scroll sections */
