@@ -148,7 +148,7 @@
 
 .section-2 {
   margin-top: 100px;
-  background-image: url('../public/imgs/img_background_glitch/bg_img_lamp.jpg');
+  background-image: url('/imgs/img_background_glitch/bg_img_lamp.jpg');
   background-position: right;
   background-size: contain;
 
@@ -157,7 +157,7 @@
 }
 
 .section-3 {
-  background-image: url('../public/imgs/img_background_glitch/bg_img_moon.jpg');
+  background-image: url('/imgs/img_background_glitch/bg_img_moon.jpg');
   background-size: contain;
   background-position: left;
 
@@ -166,7 +166,7 @@
 }
 
 .section-4 {
-  background-image: url('/imgs/img_background_glitch/bg_img_neonlamp.png');
+  background-image: url('/img_background_glitch/bg_img_neonlamp.png');
 
   /* L'equivalente di object-fit: cover per gli sfondi CSS */
   background-size: contain;
