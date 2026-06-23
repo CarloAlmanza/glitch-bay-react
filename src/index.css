@@ -501,10 +501,6 @@
   position: relative;
 }
 
-@media screen and (min-width: 450px) {
-  .side-card {
-    display: initial;
-  }
 /* Effetto Neon per il Cuore Attivo */
 .explore-btn.active-heart {
   border-color: #ff007f !important;
