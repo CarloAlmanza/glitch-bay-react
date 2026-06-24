@@ -23,8 +23,8 @@ function Layout() {
                     </Link>
 
                     <div className="d-none d-lg-flex gap-3 align-items-center">
-                        <Link to="/" className="text-white text-decoration-none fw-bold">Pagina iniziale</Link>
-                        <Link to="/products" className="text-white text-decoration-none fw-bold">I Nostri Prodotti</Link>
+                        <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold">Pagina iniziale</Link>
+                        <Link to="/products" className=" cyber-link text-white text-decoration-none fw-bold">I Nostri Prodotti</Link>
 
 
                         {/* Pulsante Wishlist Desktop */}
@@ -109,7 +109,7 @@ function Layout() {
                                 <span>TOTAL:</span>
                                 <span className="fw-bold text-success">€{totalPrice}</span>
                             </div>
-                            <Link  to="checkout">
+                            <Link to="checkout">
                                 <button className="btn btn-dark w-100 mb-2 border-success text-success fw-bold">VAI AL PAGAMENTO</button>
                             </Link>
                             <button className="btn btn-link btn-sm w-100 text-danger text-decoration-none" onClick={clearCart}>Resetta Carrello</button>
