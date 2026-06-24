@@ -26,6 +26,23 @@ export function CartProvider({ children }) {
             return [...prevCart, { ...product, quantity: 1 }];
         });
     };
+    /* Qty Handler */
+    const increaseQuantity = (productId) => {
+        setCart((prevCart) =>
+            prevCart.map((item) =>
+                item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
+    };
+    const decreaseQuantity = (productId) => {
+        setCart((prevCart) =>
+            prevCart
+                .map((item) =>
+                    item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+                )
+                .filter((item) => item.quantity > 0)
+        );
+    };
 
     // Rimuove un elemento specifico dal carrello
     const removeFromCart = (productId) => {
@@ -38,7 +55,7 @@ export function CartProvider({ children }) {
     };
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart }}>
+        <CartContext.Provider value={{ cart, addToCart, increaseQuantity, decreaseQuantity, removeFromCart, clearCart }}>
             {children}
         </CartContext.Provider>
     );

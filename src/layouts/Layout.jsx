@@ -7,7 +7,7 @@ function Layout() {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isWishlistOpen, setIsWishlistOpen] = useState(false); // Stato per la seconda sidebar
 
-    const { cart, removeFromCart, clearCart } = useCart();
+    const { cart, removeFromCart, clearCart, increaseQuantity, decreaseQuantity } = useCart();
     const { wishlist, toggleWishlist } = useWishlist(); // Dati della wishlist
 
     const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
@@ -17,7 +17,7 @@ function Layout() {
     return (
         <div className="app-container">
             <header className='header'>
-                <nav className="navbar navbar-expand-lg d-flex justify-content-between align-items-center p-3">
+                <nav className="navbar navbar-dark navbar-expand-lg d-flex justify-content-between align-items-center p-3">
                     <Link className="navbar-brand" to="/" >
                         <img src="/imgs/glitch-bay-logo.png" alt="Logo" className="logo" />
                     </Link>
@@ -25,7 +25,7 @@ function Layout() {
                     <div className="d-none d-lg-flex gap-3 align-items-center">
                         <Link to="/" className="text-white text-decoration-none fw-bold">Home</Link>
                         <Link to="/products" className="text-white text-decoration-none fw-bold">Our Products</Link>
-                        
+
 
                         {/* Pulsante Wishlist Desktop */}
                         <button
@@ -96,6 +96,9 @@ function Layout() {
                                                 <div className="fw-bold text-truncate small">{item.name}</div>
                                                 <div className="small text-muted">{item.quantity}x - €{item.price}</div>
                                             </div>
+                                            <button onClick={() => decreaseQuantity(item.id)}>-</button>
+                                            <span>{item.quantity}</span>
+                                            <button onClick={() => increaseQuantity(item.id)}>+</button>
                                             <button className="btn btn-sm btn-outline-danger" onClick={() => removeFromCart(item.id)} style={{ padding: '2px 6px', fontSize: '0.75rem' }}>Elimina</button>
                                         </div>
                                     </div>
