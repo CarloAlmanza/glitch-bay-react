@@ -8,6 +8,7 @@ import ProductDetail from './components/pages/ProductDetail.jsx';
 import CheckoutSummary from './components/pages/CheckoutSummary.jsx';
 import ScrollReset from './components/ScrollReset.jsx';
 import NotFound from './components/pages/NotFound.jsx';
+import OrderSuccess from './components/pages/OrderSuccess.jsx';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
               <Route path="products/:slug" element={<ProductDetail />} />
               <Route path="products" element={<OurProducts />} />
               <Route path="/checkout" element={<CheckoutSummary />}/>
+              <Route path="/order_success" element={<OrderSuccess />}/>
               <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>

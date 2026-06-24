@@ -511,3 +511,42 @@
   color: #ff007f !important;
   /* Colore magenta neon fisso */
 }
+
+
+
+.cyber-checkout-card {
+  background-image: linear-gradient(to bottom, rgba(59, 21, 183, 0.4) 10%, rgba(82, 27, 141, 0.2) 70%);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.cyber-checkout-card:hover {
+  border-color: #00ffff;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+}
+
+.cyber-form {
+  background-color: rgba(11, 11, 14, 0.8);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.1);
+}
+
+.cyber-total-box {
+  background-color: #0b0b0e;
+  border: 1px solid rgba(59, 21, 183, 0.6);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(123, 0, 255, 0.2);
+}
+
+.max-w-70 {
+  max-width: 70%;
+}
+
+.cyber-form .cyber-input:focus,
+.cyber-form .cyber-select:focus {
+  border-color: #ff00ff;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
+}
