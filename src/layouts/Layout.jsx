@@ -90,7 +90,7 @@ function Layout() {
                         <>
                             <div className="cart-items" style={{ maxHeight: "55vh", overflowY: "auto" }}>
                                 {cart.map((item) => (
-                                    <div key={item.id} className="card mb-2 p-2 bg-light border-secondary">
+                                    <div key={item.slug} className="card mb-2 p-2 bg-light border-secondary">
                                         <div className="d-flex justify-content-between align-items-center text-dark">
                                             <div style={{ maxWidth: '70%' }}>
                                                 <div className="fw-bold text-truncate small">{item.name}</div>
