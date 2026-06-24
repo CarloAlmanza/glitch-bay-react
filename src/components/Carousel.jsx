@@ -18,8 +18,8 @@ function ProductsCarousel({ items = [], loading, error, title }) {
             
             {/* Controlli del carosello */}
             <div className="controls text-center mb-3">
-                <button className="btn btn-outline-info me-2" onClick={prevProduct}>Prev</button>
-                <button className="btn btn-outline-info" onClick={nextProduct}>Next</button>
+                <button className="btn btn-outline-info me-2" onClick={prevProduct}>←</button>
+                <button className="btn btn-outline-info" onClick={nextProduct}>→</button>
             </div>
 
             {/* Griglia Responsiva delle Card */}
