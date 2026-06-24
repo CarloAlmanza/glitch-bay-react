@@ -30,10 +30,10 @@ function Layout() {
 
                         {/* Pulsante Wishlist Desktop */}
                         <span
-                            className="btn position-relative p-font btn-preferiti p-font"
+                            className="btn position-relative p-font btn-preferiti"
                             onClick={() => setIsWishlistOpen(true)}
                         >
-                            <HeartFill className='cuore-preferiti'/> Preferiti
+                            <HeartFill className='cuore-preferiti' /> Preferiti
                             {totalWish > 0 && (
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-magenta" style={{ backgroundColor: '#ff007f' }}>
                                     {totalWish}
@@ -46,7 +46,7 @@ function Layout() {
                             className="btn position-relative p-font btn-carrello p-font"
                             onClick={() => setIsCartOpen(true)}
                         >
-                            <Cart3 className='icona-carrello'/> Carrello
+                            <Cart3 className='icona-carrello' /> Carrello
                             {totalItems > 0 && (
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                     {totalItems}
@@ -57,14 +57,20 @@ function Layout() {
 
                     {/* Controlli Mobile */}
                     <div className="d-lg-none d-flex gap-2">
-                        <button className="btn btn-sm btn-outline-light position-relative" onClick={() => setIsWishlistOpen(true)}>
-                            ❤️ {totalWish > 0 && <span className="position-absolute top-0 start-100 translate-middle p-1 bg-danger border border-light rounded-circle"></span>}
+                        {/* Bottone Preferiti */}
+                        <button className="btn btn-sm btn-preferiti position-relative px-3" onClick={() => setIsWishlistOpen(true)}>
+                            <HeartFill className='cuore-preferiti' />
+                            {totalWish > 0 && (
+                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.6rem' }}>{totalWish}</span>
+                            )}
                         </button>
-                        <button className="navbar-toggler position-relative" onClick={() => setIsCartOpen(true)}>
-                            <span className="navbar-toggler-icon"></span>
+
+                        {/* Bottone Carrello (Corretto) */}
+                        <button className="btn btn-sm btn-carrello position-relative px-3" onClick={() => setIsCartOpen(true)}>
+                            <Cart3 className="icona-carrello" /> {/* Ho aggiunto anche la tua classe per l'icona */}
                             {totalItems > 0 && (
                                 <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style={{ fontSize: '0.6rem' }}>
-                                    {totalItems}
+                                    {totalItems} {/* <--- IMPORTANTE: Inserisci il numero qui per renderlo visibile */}
                                 </span>
                             )}
                         </button>
