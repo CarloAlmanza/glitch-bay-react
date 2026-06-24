@@ -41,6 +41,8 @@ async function fetchTopSeller() {
         }
 
         const data = await response.json();
+
+
         return data.result;
     } catch (error) {
         console.error('Errore', error);
@@ -49,8 +51,8 @@ async function fetchTopSeller() {
 };
 
 async function fetchSingle(slug) {
-    
-    
+
+
     try {
         const response = await fetch(`http://localhost:3000/products/${slug}`);
         console.log(response);
@@ -66,4 +68,19 @@ async function fetchSingle(slug) {
     }
 };
 
-export { fetchAll, fetchFive, fetchTopSeller, fetchSingle };
+async function fetchCategories() {
+    try {
+        const res = await fetch("http://localhost:3000/categories");
+        
+        if (!res.ok) {
+            throw new Error(`Errore HTTP! Stato: ${res.status}`);
+        }
+        const data = await res.json();
+        return data.result;
+    } catch (err) {
+        console.error("Errore nel recupero categorie:", err);
+        return null
+    }
+};
+
+export { fetchAll, fetchFive, fetchTopSeller, fetchSingle, fetchCategories };

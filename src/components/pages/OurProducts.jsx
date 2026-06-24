@@ -1,62 +1,78 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect } from "react";
 import ProductList from "../ProductList";
-import { fetchAll } from "../../utils/fetch";
+import { fetchAll, fetchCategories } from "../../utils/fetch";
 
 function OurProducts() {
     const [products, setProducts] = useState([]);
-
-    // Stati per la ricerca, il filtro e l'ordinamento
+    const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [sortOrder, setSortOrder] = useState(""); // "" | "asc" | "desc"
+    const [isSortedByPrice, setIsSortedByPrice] = useState(false);
+
+
 
     useEffect(() => {
-        fetchAll()
-            .then((data) => {
-                setProducts(data);
-            })
-            .catch((err) => console.error("Errore nel recupero prodotti:", err));
+        const getProducts = async () => {
+            const productsFetched = await fetchAll();
+            if (productsFetched) {
+                setProducts(productsFetched);
+            }
+        };
+        getProducts();
+        
+        const getCategories = async () => {
+            const categoriesFetched = await fetchCategories();
+            if (categoriesFetched) {
+                setCategories(categoriesFetched);
+            }
+        };
+        getCategories();
     }, []);
 
-    // Estraiamo le categorie uniche dai prodotti per popolare dinamicamente la select
-    const categories = useMemo(() => {
-        const allCategories = products.map((p) => p.category).filter(Boolean);
-        return [...new Set(allCategories)];
-    }, [products]);
 
-    // Logica combinata di Filtro + Ricerca + Ordinamento
-    const filteredAndSortedProducts = useMemo(() => {
-        let result = [...products];
+    useEffect(() => {
+        const fetchFilteredProducts = async () => {
+            const params = new URLSearchParams();
 
-        // 1. Filtro per Nome (Ricerca testuale)
-        if (searchQuery.trim() !== "") {
-            result = result.filter((product) =>
-                product.name.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        }
+            if (searchQuery.trim() !== "") {
+                params.append("search", searchQuery.trim());
+            }
 
-        // 2. Filtro per Categoria
-        if (selectedCategory !== "") {
-            result = result.filter((product) => product.category === selectedCategory);
-        }
+            if (selectedCategory !== "") {
+                params.append("category", selectedCategory); // Passa l'ID della categoria
+            }
 
-        // 3. Ordinamento per Prezzo
-        if (sortOrder === "asc") {
-            result.sort((a, b) => a.price - b.price);
-        } else if (sortOrder === "desc") {
-            result.sort((a, b) => b.price - a.price);
-        }
+            if (isSortedByPrice) {
+                params.append("order", "price");
+            }
 
-        return result;
-    }, [products, searchQuery, selectedCategory, sortOrder]);
+            const queryString = params.toString();
+            const url = `http://localhost:3000/products${queryString ? `?${queryString}` : ""}`;
+
+            try {
+                const res = await fetch(url);
+                if (!res.ok) {
+                    throw new Error(`Errore HTTP! Stato: ${res.status}`);
+                }
+                const data = await res.json();
+                const finalProducts = data.result
+
+                setProducts(finalProducts ?? []);
+            } catch (err) {
+                console.error("Errore nel recupero prodotti filtrati:", err);
+                setProducts([]);
+            }
+        };
+
+        fetchFilteredProducts();
+    }, [searchQuery, selectedCategory, isSortedByPrice]);
 
     return (
         <div className="products-page">
             <main className="products-main container py-5">
-                {/* Barra dei Controlli con Grid di Bootstrap */}
-                <section className="row g-3 justify-content-center mb-5 cyber-controls-bar">
+                <section className="row g-3 justify-content-center mb-5 cyber-controls-bar align-items-center">
 
-                    {/* Input di Ricerca */}
+                    {/* SEARCH */}
                     <div className="col-12 col-md-5">
                         <div className="input-group">
                             <span className="input-group-text cyber-addon">🔍</span>
@@ -70,8 +86,8 @@ function OurProducts() {
                         </div>
                     </div>
 
-                    {/* Select Categoria */}
-                    <div className="col-6 col-md-3">
+                    {/* SELECT CATEGORIES */}
+                    <div className="col-6 col-md-4">
                         <select
                             value={selectedCategory}
                             onChange={(e) => setSelectedCategory(e.target.value)}
@@ -79,29 +95,34 @@ function OurProducts() {
                         >
                             <option value="">Tutte le categorie</option>
                             {categories.map((cat) => (
-                                <option key={cat} value={cat}>
-                                    {cat}
+                                <option key={cat.id} value={cat.id}>
+                                    {cat.name}
                                 </option>
                             ))}
                         </select>
                     </div>
 
-                    {/* Select Ordinamento Prezzo */}
-                    <div className="col-6 col-md-3">
-                        <select
-                            value={sortOrder}
-                            onChange={(e) => setSortOrder(e.target.value)}
-                            className="form-select cyber-select p-font"
+                    {/* BUTTON ORDER */}
+                    <div className="col-6 col-md-3 d-grid">
+                        <button
+                            type="button"
+                            onClick={() => setIsSortedByPrice(!isSortedByPrice)}
+                            className={`btn p-font ${isSortedByPrice ? 'btn-warning' : 'btn-outline-light'}`}
                         >
-                            <option value="">Ordina per...</option>
-                            <option value="asc">Prezzo: Crescente</option>
-                            <option value="desc">Prezzo: Decrescente</option>
-                        </select>
+                            {isSortedByPrice ? "Ordinato per Prezzo ✓" : "Ordina per Prezzo"}
+                        </button>
                     </div>
                 </section>
 
-                {/* Lista Prodotti Filtrata */}
-                <ProductList products={filteredAndSortedProducts} displayed={'product-page'} />
+                {products && products.length > 0 ? (
+                    <ProductList products={products} displayed={'product-page'} />
+                ) : (
+                    <div className="text-center text-white py-5">
+                        <p className="fs-4 p-font">Nessun prodotto trovato</p>
+                    </div>
+                )}
+
+                
             </main>
         </div>
     );
