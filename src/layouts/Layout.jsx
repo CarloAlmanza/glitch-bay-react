@@ -98,7 +98,7 @@ function Layout() {
                                             </div>
                                             <button onClick={() => increaseQuantity(item.slug)}>+</button>
                                             <button onClick={() => decreaseQuantity(item.slug)}>-</button>
-                                            <button className="btn btn-sm btn-outline-danger" onClick={() => removeFromCart(item.id)} style={{ padding: '2px 6px', fontSize: '0.75rem' }}>Elimina</button>
+                                            <button className="btn btn-sm btn-outline-danger" onClick={() => removeFromCart(item.slug)} style={{ padding: '2px 6px', fontSize: '0.75rem' }}>Elimina</button>
                                         </div>
                                     </div>
                                 ))}
