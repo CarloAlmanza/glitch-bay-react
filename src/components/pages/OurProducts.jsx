@@ -10,7 +10,7 @@ function OurProducts() {
     const [selectedCategory, setSelectedCategory] = useState("");
     const [direction, setDirection] = useState(false);
     const [selectedOrder, setSelectedOrder] = useState('');
-    const orderOptions = ['name', 'price', 'created_at'];
+    const orderOptions = [{label: 'Nome', value: 'name'}, {lable: 'Prezzo', value: 'price'}, {label: 'Data', value: 'created_at'}];
 
 
 
@@ -122,8 +122,9 @@ function OurProducts() {
                         >
                             <option value="">Ordina Per</option>
                             {orderOptions.map((opt) => (
-                                <option key={opt} value={opt}>
-                                    {opt}
+                                
+                                <option key={opt.value} value={opt.value} className=" text-capitalize">
+                                    {opt.lable}
                                 </option>
                             ))}
                         </select>
