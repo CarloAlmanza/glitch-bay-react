@@ -86,7 +86,7 @@ function OurProducts() {
                     {/* SEARCH */}
                     <div className="col-12 col-md-5">
                         <div className="input-group">
-                            <span className="input-group-text cyber-addon"><i class="bi bi-search"></i></span>
+                            <span className="input-group-text cyber-addon"><i className="bi bi-search"></i></span>
                             <input
                                 type="text"
                                 placeholder="Cerca hardware..."

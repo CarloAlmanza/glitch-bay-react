@@ -10,7 +10,7 @@ function ProductCard({ product, displayed, viewMode }) {
         addToCart,
         increaseQuantity,
         decreaseQuantity,
-        removeFromCar
+        removeFromCart
     } = useCart();
     const { wishList, setWishList, addWishHandler } = useWishlist(); // Estraiamo le funzioni della wishlist
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
@@ -57,7 +57,6 @@ function ProductCard({ product, displayed, viewMode }) {
                         className={`btn explore-btn flex-grow-0 ${isAdded ? 'active-heart' : ''}`}
                         onClick={(e) => {
                             e.stopPropagation();
-                            // Passiamo l'inverso di isLiked
                             addWishHandler(product, !isAdded);
                         }}
                     >
@@ -70,31 +69,40 @@ function ProductCard({ product, displayed, viewMode }) {
                 )}
 
                 {cartItem ? (
-                    <div
-                        className="d-flex align-items-center justify-content-between flex-grow-1 ms-auto cyber-qty-box "
-                        style={{
-                            border: '1px solid #00f0ff',
-                            borderRadius: '8px',
-                            padding: '4px 8px'
-                        }}
-                    >
-                        
-                        <span className="fw-bold p-font qty-display">
-                            {cartItem.quantity}
-                        </span>
-
-                        <button
-                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold me-2"
-                            onClick={() => decreaseQuantity(product.slug)}
+                    <div className="d-flex align-items-center gap-2 flex-grow-1">
+                        <div
+                            className="d-flex align-items-center justify-content-between flex-grow-1 ms-auto cyber-qty-box "
+                            style={{
+                                border: '1px solid #00f0ff',
+                                borderRadius: '8px',
+                                padding: '4px 8px'
+                            }}
                         >
-                            <DashCircle />
-                        </button>
 
+                            <span className="fw-bold p-font qty-display">
+                                {cartItem.quantity}
+                            </span>
+
+                            <button
+                                className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold me-2"
+                                onClick={() => decreaseQuantity(product.slug)}
+                            >
+                                <DashCircle />
+                            </button>
+
+                            <button
+                                className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
+                                onClick={() => increaseQuantity(product.slug)}
+                            >
+                                <PlusCircle />
+                            </button>
+                        </div>
                         <button
-                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
-                            onClick={() => increaseQuantity(product.slug)}
+                            className="d-flex trash-box align-items-center justify-content-between ms-auto cyber-qty-box "
+                            onClick={() => removeFromCart(product.slug)}
+                            title="Rimuovi dal carrello"
                         >
-                            <PlusCircle />
+                            <Trash size={18} />
                         </button>
                     </div>
                 ) : (
@@ -107,7 +115,7 @@ function ProductCard({ product, displayed, viewMode }) {
                             boxShadow: '0 0 5px rgba(0, 240, 255, 0.2)'
                         }}
                     >
-                        <Cart3/>
+                        <Cart3 />
                     </button>
                 )}
             </div>

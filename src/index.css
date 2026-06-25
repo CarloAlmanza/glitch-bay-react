@@ -963,3 +963,11 @@
     z-index: 3;
   }
 }
+
+.trash-box {
+  border: 1px solid rgb(0, 240, 255);
+  color: rgb(0, 240, 255);
+  background-color: #00000000;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
