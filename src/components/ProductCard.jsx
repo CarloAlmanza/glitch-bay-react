@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Heart, HeartFill } from "react-bootstrap-icons"; // Importiamo anche HeartFill
+import { Heart, HeartFill, PlusCircle, DashCircle } from "react-bootstrap-icons"; // Importiamo anche HeartFill
 import { useCart } from "../context/CartContext.jsx";
 import { useWishlist } from "../context/WishlistContext.jsx"; // Nuovo import
 
@@ -76,22 +76,23 @@ function ProductCard({ product, displayed }) {
                             padding: '4px 8px'
                         }}
                     >
-                        <button
-                            className="btn explore-btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
-                            onClick={() => decreaseQuantity(product.slug)}
-                        >
-                            -
-                        </button>
 
                         <span className="fw-bold p-font qty-display">
                             {cartItem.quantity}
                         </span>
 
                         <button
-                            className="btn explore-btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
+                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold me-2"
+                            onClick={() => decreaseQuantity(product.slug)}
+                        >
+                            <DashCircle/>
+                        </button>
+
+                        <button
+                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
                             onClick={() => increaseQuantity(product.slug)}
                         >
-                            +
+                            <PlusCircle/>
                         </button>
                     </div>
                 ) : (
