@@ -69,7 +69,7 @@ function ProductCard({ product, displayed }) {
 
                 {cartItem ? (
                     <div
-                        className="d-flex align-items-center justify-content-between flex-grow-1 cyber-qty-box "
+                        className="d-flex align-items-center justify-content-between flex-grow-1 ms-auto cyber-qty-box "
                         style={{
                             border: '1px solid #00f0ff',
                             borderRadius: '8px',
@@ -77,25 +77,18 @@ function ProductCard({ product, displayed }) {
                         }}
                     >
                         <button
-                            className="btn btn-outline-info btn-sm"
+                            className="btn explore-btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
                             onClick={() => decreaseQuantity(product.slug)}
                         >
                             -
                         </button>
 
-                        <span
-                            className="fw-bold"
-                            style={{
-                                color: '#00f0ff',
-                                minWidth: '30px',
-                                textAlign: 'center'
-                            }}
-                        >
+                        <span className="fw-bold p-font qty-display">
                             {cartItem.quantity}
                         </span>
 
                         <button
-                            className="btn btn-outline-info btn-sm"
+                            className="btn explore-btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
                             onClick={() => increaseQuantity(product.slug)}
                         >
                             +
