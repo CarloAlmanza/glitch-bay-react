@@ -1,0 +1,58 @@
+import { useLocation, Link } from 'react-router-dom';
+
+function OrderSuccess() {
+    const location = useLocation();
+    const order = location.state?.order; 
+
+    return (
+        <div className="products-page min-vh-100 d-flex align-items-center py-5">
+            <div className="container text-center p-font">
+                
+
+                <div className="mb-4">
+                    <i className="bi bi-shield-check text-info" style={{ fontSize: '4.5rem', filter: 'drop-shadow(0 0 15px #00ffff)' }}></i>
+                </div>
+
+                <h2 className="cyber-title title-font mb-3">Protocollo Completato</h2>
+                <p className="fs-5 text-white-50 mb-5">La transazione sulla griglia è andata a buon fine. Collegamento sicuro stabilito.</p>
+                
+                {order ? (
+                    <div className="cyber-form p-4 my-4 mx-auto text-start text-white" style={{ maxWidth: '550px' }}>
+                        <h4 className="title-font mb-4 text-info border-bottom border-secondary pb-2">Riepilogo Trasmissione:</h4>
+                        
+                        <div className="mb-3">
+                            <span className="text-white-50 small d-block">ID FATTURA / NUMERO ORDINE</span>
+                            <strong className="fs-5 text-uppercase">#{order.invoiceNum}</strong>
+                        </div>
+
+                        <div className="mb-4">
+                            <span className="text-white-50 small d-block">CHIAVE DI TRACCIAMENTO / TRACKING</span>
+                            <code className="text-warning fs-6 bg-dark px-2 py-1 rounded border border-secondary d-inline-block mt-1">
+                                {order.tracking_number}
+                            </code>
+                        </div>
+
+                        <div className="cyber-line mb-3"></div>
+                        
+                        <p className="small opacity-75 m-0 italic text-center">
+                            <i className="bi bi-terminal me-2"></i>
+                            Un encrypted-mail di conferma è stata inviata al tuo terminale di rete.
+                        </p>
+                    </div>
+                ) : (
+                    <div className="cyber-total-box p-4 my-4 mx-auto text-white" style={{ maxWidth: '500px' }}>
+                        <p className="fs-5 m-0 fw-bold text-uppercase tracking-wider">Grazie per il tuo acquisto, Cyber-Cittadino!</p>
+                    </div>
+                )}
+
+                <div className="mt-5">
+                    <Link to="/" className="btn cyber-btn py-3 px-4">
+                        <span className="btn-shop-text text-uppercase tracking-wider fw-bold">Ritorna allo Shop</span>
+                    </Link>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default OrderSuccess;

@@ -1,19 +1,29 @@
 import { useEffect, useState } from "react"
 import { fetchSingle } from "../../utils/fetch.js"
 import { useParams } from "react-router-dom";
-import ProductCard from "../ProductCard.jsx";
+import { useCart } from "../../context/CartContext.jsx";
+import { useWishlist } from "../../context/WishlistContext.jsx";
+import { Heart, HeartFill, CartPlus } from "react-bootstrap-icons"
 
 function ProductDetail() {
-    
     const [product, setProduct] = useState([]);
     const { slug } = useParams();
+    const { addToCart } = useCart();
+    const { wishList, setWishList, addWishHandler } = useWishlist();
+    const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
     useEffect(() => {
         fetchSingle(slug).then(product => {
             setProduct(product);
         })
-    }, []);
+    }, [slug]);
     const hasDiscount = product.discounted_price && product.discounted_price !== product.price;
-
+    const handleAddToCart = () => {
+        const productToCart = {
+            ...product,
+            price: hasDiscount ? product.discounted_price : product.price
+        };
+        addToCart(productToCart);
+    };
     return (
         <div className="container-product-detail py-5">
             <div className="cyber-detail-card">
@@ -31,8 +41,8 @@ function ProductDetail() {
                         </h1>
                         <div className="cyber-price mt-4 p-font">
                             {hasDiscount ? (
-                                <>  
-                                    
+                                <>
+
                                     <h5 className="text-decoration-line-through cut-price-detail opacity-50">
                                         ${product.price}
                                     </h5>
@@ -46,12 +56,24 @@ function ProductDetail() {
                         <p className="cyber-description mt-4 p-font">
                             {product.description}
                         </p>
-                        <button className="btn cyber-btn mt-4">
-                            <p className="btn-shop-text">Aggiungi al carrello</p>
-                        </button>
-                        <button className="btn cyber-btn mt-4 ms-3">
-                            <p className="btn-shop-text">Aggiungi alla wishlist</p>
-                        </button>
+                        <div className="d-flex align-items-center justify-content-start gap-2">
+                            <button className="cyber-action-btn" onClick={handleAddToCart}>
+                                <CartPlus className="cyber-icon" size={17}/>
+                            </button>
+                            <button
+                                className={`cyber-action-btn ${isAdded ? 'active-heart' : ''}`}
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    addWishHandler(product, !isAdded);
+                                }}
+                            >
+                                {isAdded ? (
+                                    <HeartFill className="cyber-icon" size={17} />
+                                ) : (
+                                    <Heart className="cyber-icon" size={17} />
+                                )}
+                            </button>
+                        </div>
                     </div>
 
                 </div>
