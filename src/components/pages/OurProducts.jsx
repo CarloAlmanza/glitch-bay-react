@@ -2,8 +2,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom"; // Importazione da react-router-dom
 import ProductList from "../ProductList";
 import { fetchCategories } from "../../utils/fetch";
-import { ArrowDown, ArrowUp } from "react-bootstrap-icons";
-import { fetchAll, fetchCategories } from "../../utils/fetch";
 import BtnScrollUp from "../BtnScrollUp";
 import { ArrowDown, ArrowUp, Grid3x3Gap, ListUl } from "react-bootstrap-icons";
 //nada
