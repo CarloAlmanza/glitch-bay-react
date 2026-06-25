@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import ProductList from "../ProductList";
 import { fetchAll, fetchCategories } from "../../utils/fetch";
+import { ArrowDown, ArrowUp } from "react-bootstrap-icons";
 
 function OurProducts() {
     const [products, setProducts] = useState([]);
     const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [selectedCategory, setSelectedCategory] = useState("");
-    const [isSortedByPrice, setIsSortedByPrice] = useState(false);
+    const [direction, setDirection] = useState(false);
+    const [selectedOrder, setSelectedOrder] = useState('');
+    const orderOptions = [{label: 'Nome', value: 'name'}, {lable: 'Prezzo', value: 'price'}, {label: 'Data', value: 'created_at'}];
 
 
 
@@ -19,7 +22,7 @@ function OurProducts() {
             }
         };
         getProducts();
-        
+
         const getCategories = async () => {
             const categoriesFetched = await fetchCategories();
             if (categoriesFetched) {
@@ -42,9 +45,17 @@ function OurProducts() {
                 params.append("category", selectedCategory); // Passa l'ID della categoria
             }
 
-            if (isSortedByPrice) {
-                params.append("order", "price");
+            if (selectedOrder !== '') {
+                params.append('order', selectedOrder);
+
+                if (direction) {
+                    params.append('direction', 'ASC');
+                } else {
+                    params.append('direction', 'DESC');
+                }
             }
+
+
 
             const queryString = params.toString();
             const url = `http://localhost:3000/products${queryString ? `?${queryString}` : ""}`;
@@ -65,7 +76,7 @@ function OurProducts() {
         };
 
         fetchFilteredProducts();
-    }, [searchQuery, selectedCategory, isSortedByPrice]);
+    }, [searchQuery, selectedCategory, selectedOrder, direction]);
 
     return (
         <div className="products-page">
@@ -104,13 +115,27 @@ function OurProducts() {
 
                     {/* BUTTON ORDER */}
                     <div className="col-6 col-md-3 d-grid">
+                        <select
+                            value={selectedOrder}
+                            onChange={(e) => setSelectedOrder(e.target.value)}
+                            className="form-select cyber-select p-font"
+                        >
+                            <option value="">Ordina Per</option>
+                            {orderOptions.map((opt) => (
+                                
+                                <option key={opt.value} value={opt.value} className=" text-capitalize">
+                                    {opt.lable}
+                                </option>
+                            ))}
+                        </select>
                         <button
                             type="button"
-                            onClick={() => setIsSortedByPrice(!isSortedByPrice)}
-                            className={`btn p-font ${isSortedByPrice ? 'btn-warning' : 'btn-outline-light'}`}
+                            onClick={() => setDirection(!direction)}
+                            className={`btn p-font ${direction ? 'btn-warning' : 'btn-outline-light'}`}
                         >
-                            {isSortedByPrice ? "Ordinato per Prezzo ✓" : "Ordina per Prezzo"}
+                            {direction ? <ArrowDown /> : <ArrowUp />}
                         </button>
+
                     </div>
                 </section>
 
@@ -122,7 +147,7 @@ function OurProducts() {
                     </div>
                 )}
 
-                
+
             </main>
         </div>
     );
