@@ -2,7 +2,8 @@ import { Outlet, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useWishlist } from '../context/WishlistContext.jsx'; // Nuovo import
-import { HeartFill, Cart3} from 'react-bootstrap-icons';
+import { HeartFill, Cart3 } from 'react-bootstrap-icons';
+import { Trash } from "react-bootstrap-icons";
 
 function Layout() {
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -130,27 +131,53 @@ function Layout() {
             {/* SIDEBAR 2: LA WISHLIST (Nuova!) */}
             <nav className={`sidebar ${isWishlistOpen ? 'active' : ''}`}>
                 <div className="d-flex justify-content-between align-items-center mb-3">
-                    <h4 className="text-dark title-font" style={{ color: '#ff007f' }}>Wishlist</h4>
-                    <button className="close-btn" onClick={() => setIsWishlistOpen(false)}>×</button>
+                    <h4 className="text-dark title-font cyber-glitch-title" style={{ color: '#ff007f' }}>Wishlist</h4>
+                    <button className="close-btn btn-close-bg-white" onClick={() => setIsWishlistOpen(false)}>×</button>
                 </div>
                 <div className="wishlist-section p-font">
-                    <h5 className="text-dark mb-3">Componenti salvati:</h5>
+
                     {wishList.length === 0 ? (
                         <p className="text-muted small">Nessun codice salvato nei preferiti...</p>
                     ) : (
                         <div className="wishlist-items" style={{ maxHeight: "70vh", overflowY: "auto" }}>
                             {wishList.map((item) => (
-                                <div key={item.slug} className="card mb-2 p-2 bg-light border-secondary">
-                                    <div className="d-flex justify-content-between align-items-center text-dark">
-                                        <div className="text-truncate style" style={{ maxWidth: '70%' }}>
-                                            <span className="fw-bold small">{item.name}</span>
+                                <div
+                                    key={item.slug}
+                                    className="card mb-3 bg-light border-info overflow-hidden    cyber-card-item"
+                                >
+                                    <Link
+                                        to={`/products/${item.slug}`}
+                                        className="text-decoration-none text-dark"
+                                        onClick={() => setIsWishlistOpen(false)}
+                                    >
+                                        <img
+                                            src={item.img}
+                                            alt={item.name}
+                                            className="card-img-top card-whishlist"
+                                            style={{
+                                                height: "140px",
+                                                width: "100%",
+                                                objectFit: "cover"
+
+
+                                            }}
+                                        />
+
+                                        <div className="card-body p-2">
+                                            <h6 className="card-title mb-0">
+                                                {item.name}
+                                            </h6>
                                         </div>
+                                    </Link>
+
+                                    <div className="card-footer bg-white border-0">
                                         <button
-                                            className="btn btn-sm btn-outline-danger"
+                                            className="btn btn-outline-danger btn-sm w-100"
                                             onClick={() => addWishHandler(item)}
-                                            style={{ padding: '2px 6px', fontSize: '0.75rem' }}
                                         >
+
                                             Rimuovi
+                                            <Trash size={16} className="me-2" />
                                         </button>
                                     </div>
                                 </div>
@@ -158,12 +185,12 @@ function Layout() {
                         </div>
                     )}
                 </div>
-            </nav>
+            </nav >
 
             <main>
                 <Outlet />
             </main>
-        </div>
+        </div >
     );
 }
 

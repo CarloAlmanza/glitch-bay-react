@@ -43,6 +43,8 @@
 }
 
 
+
+
 /* Header */
 .header {
   width: 100%;
@@ -300,12 +302,26 @@
   right: -100%;
   width: 100%;
   height: 100%;
-  background: #fff;
   transition: 0.3s;
   z-index: 1000;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom, rgba(194, 246, 253, 0.922), rgba(144, 233, 255, 0.297));
+  /*
+  background: linear-gradient(135deg,
+      rgba(5, 8, 22, 0.85),
+      rgba(10, 15, 44, 0.75),
+      rgba(42, 11, 69, 0.75),
+      rgba(0, 0, 0, 0.9));
+
+*/
+
 }
+
+/*.btn-close-bg-white {
+  color: white;
+}
+  */
 
 .sidebar.active {
   right: 0;
@@ -856,6 +872,16 @@
   justify-content: center;
 }
 
+/*WHISHLIST LAYOUT */
+.sidebar-bg {
+  background: linear-gradient(180deg,
+      #000000 0%,
+      #050505 15%,
+      #0f172a 45%,
+      #111827 55%,
+      #050505 90%,
+      #000000 100%)
+}
 
 
 /*Shop botton */
