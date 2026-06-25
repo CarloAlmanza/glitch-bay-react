@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import { fetchFive, fetchTopSeller } from "../../utils/fetch";
 import ProductsCarousel from "../Carousel";
+import BtnScrollUp from "../BtnScrollUp";
 
 function Home() {
     const [latest, setLatest] = useState([]);
@@ -28,6 +29,7 @@ function Home() {
     return (
 
         <main className="homepage-main position-relative">
+            <BtnScrollUp/>
             <div className="d-flex justify-content-around">
                 <div className="d-flex w-50 flex-column text-center">
                     <div className="home-motto">

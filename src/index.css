@@ -43,6 +43,8 @@
 }
 
 
+
+
 /* Header */
 .header {
   width: 100%;
@@ -196,6 +198,10 @@
   justify-content: center;
 }
 
+.card-actions {
+  justify-content: space-between;
+}
+
 .carousel {
   z-index: 3;
   padding-top: 16%;
@@ -289,6 +295,28 @@
   mask-image: linear-gradient(to right, black 70%, transparent 100%);
 }
 
+/* BOTTONE SCROLL UP*/
+
+.btn-scroll-wrapper {
+   z-index: 10;
+   height: 6vh;
+   width: 6vw;
+   bottom: 22px;
+}
+
+.btn-scroll-up {
+  color: white;
+  cursor: pointer;
+  z-index: 11;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-scroll-up:hover {
+  color: #93ff87;
+  filter: drop-shadow(0px 0px 4px #c6ff80) drop-shadow(0px 0px 8px rgba(166, 255, 0, 0.57));
+  transform: translateY(-2px);
+}
+
 /* Navbar + Sidebar */
 .sidebar {
   position: fixed;
@@ -296,12 +324,26 @@
   right: -100%;
   width: 100%;
   height: 100%;
-  background: #fff;
   transition: 0.3s;
   z-index: 1000;
   padding: 20px;
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
+  background-image: linear-gradient(to bottom, rgba(194, 246, 253, 0.964), rgba(144, 233, 255, 0.297));
+  /*
+  background: linear-gradient(135deg,
+      rgba(5, 8, 22, 0.85),
+      rgba(10, 15, 44, 0.75),
+      rgba(42, 11, 69, 0.75),
+      rgba(0, 0, 0, 0.9));
+
+*/
+
 }
+
+/*.btn-close-bg-white {
+  color: white;
+}
+  */
 
 .sidebar.active {
   right: 0;
@@ -414,7 +456,7 @@
 .explore-btn {
   align-self: flex-end;
   /* Spinge il bottone a destra se la card è flex */
-  width: 20%;
+  width: auto;
   color: white;
   background-color: rgba(152, 255, 221, 0.837) !important;
   border: none;
@@ -849,8 +891,19 @@
   display: flex;
   gap: 10px;
   align-items: center;
+  justify-content: center;
 }
 
+/*WHISHLIST LAYOUT */
+.sidebar-bg {
+  background: linear-gradient(180deg,
+      #000000 0%,
+      #050505 15%,
+      #0f172a 45%,
+      #111827 55%,
+      #050505 90%,
+      #000000 100%)
+}
 
 
 /*Shop botton */
@@ -862,22 +915,8 @@
   padding: '4px 8px';
 }
 
-@media screen and (min-width: 420px) {
-  .sidebar {
-    right: -350px;
-    width: 350px;
-  }
-}
-
-@media screen and (min-width: 576px) {
-  .sect-1-p {
-    display: initial;
-    z-index: 3;
-  }
-
-  .home-motto {
-    width: 80%;
-  }
+.home-motto {
+  width: 80%;
 }
 
 .tracking-wider {
@@ -913,13 +952,90 @@
   transform: translateY(1px);
 }
 
+.btn-outline-info {
+  height: 40px;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-outline-info svg {
+  translate: 0 -10%;
+  transition: all 0.4s ease-in-out;
+}
+
+.btn-outline-info:hover svg {
+  color: #ffffffd2;
+  /* Ciano Neon: contrasta da dio con lo sfondo magenta del bottone! */
+
+  /* Applica il doppio drop-shadow direttamente all'elemento SVG generato dal componente */
+  filter: drop-shadow(0px 0px 4px #fff4a1) drop-shadow(0px 0px 8px rgba(255, 230, 142, 0.57));
+}
+
 .qty-btn {
-  width: 32px;
-  height: 32px;
   line-height: 0;
+  color: white;
+  background-color: rgba(152, 255, 221, 0.837) !important;
+  border: none;
+  border-radius: 50% !important;
+  /* Rimuove i bordi standard di Bootstrap */
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+
+  /* Centra perfettamente l'icona di react-bootstrap dentro il bottone */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.qty-btn:hover {
+  background-color: rgba(126, 236, 251, 0.837) !important;
+  /* Forza il cambio rispetto all'important sopra */
+  border-color: #b400d4;
+  box-shadow: 0 0 15px #b400d4;
+}
+
+/* Hover sul BOTTONE -> Cambia l'ICONA interna */
+.qty-btn:hover i {
+  color: #ff00a6d2;
+  /* Ciano Neon: contrasta da dio con lo sfondo magenta del bottone! */
+
+  /* Applica il doppio drop-shadow direttamente all'elemento SVG generato dal componente */
+  filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
 }
 
 .qty-display {
   min-width: 30px;
   text-align: center;
 }
+
+.trash-box {
+  border: 1px solid rgb(0, 240, 255);
+  color: rgb(0, 240, 255);
+  background-color: #00000000;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
+
+.trash-box svg {
+  transition: all 0.3s ease-in-out;
+}
+
+.trash-box:hover svg {
+  color: #ff0066e9;
+  filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
+}
+
+@media screen and (min-width: 420px) {
+  .sidebar {
+    right: -350px;
+    width: 350px;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .sect-1-p {
+    display: initial;
+    z-index: 3;
+  }
+}
+

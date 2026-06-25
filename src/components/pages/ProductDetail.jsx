@@ -3,12 +3,20 @@ import { fetchSingle } from "../../utils/fetch.js"
 import { useParams } from "react-router-dom";
 import { useCart } from "../../context/CartContext.jsx";
 import { useWishlist } from "../../context/WishlistContext.jsx";
-import { Heart, HeartFill, CartPlus } from "react-bootstrap-icons"
+import { Heart, HeartFill, Cart3, DashCircle, PlusCircle } from "react-bootstrap-icons"
 
 function ProductDetail() {
     const [product, setProduct] = useState([]);
     const { slug } = useParams();
-    const { addToCart } = useCart();
+    const { cart,
+            addToCart,
+            increaseQuantity,
+            decreaseQuantity } = useCart();
+
+    const cartItem = cart.find(
+        (item) => item.slug === product.slug
+    );
+
     const { wishList, setWishList, addWishHandler } = useWishlist();
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
     useEffect(() => {
@@ -57,9 +65,41 @@ function ProductDetail() {
                             {product.description}
                         </p>
                         <div className="d-flex align-items-center justify-content-start gap-2">
-                            <button className="cyber-action-btn" onClick={handleAddToCart}>
-                                <CartPlus className="cyber-icon" size={17}/>
-                            </button>
+
+
+                                {cartItem ? (
+                                    <div
+                                        className="d-flex align-items-center flex-grow-0 cyber-qty-box "
+                                        style={{
+                                            border: '1px solid #00f0ff',
+                                            borderRadius: '8px',
+                                            padding: '4px 8px'
+                                        }}
+                                    >
+
+                                        <span className="fw-bold p-font qty-display">
+                                            {cartItem.quantity}
+                                        </span>
+
+                                        <button
+                                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold me-2"
+                                            onClick={() => decreaseQuantity(product.slug)}
+                                        >
+                                            <DashCircle />
+                                        </button>
+
+                                        <button
+                                            className="btn qty-btn d-flex align-items-center justify-content-center p-0 fw-bold"
+                                            onClick={() => increaseQuantity(product.slug)}
+                                        >
+                                            <PlusCircle />
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <button className="cyber-action-btn" onClick={handleAddToCart}>
+                                        <Cart3 className="cyber-icon" size={17} />
+                                    </button>
+                                )}
                             <button
                                 className={`cyber-action-btn ${isAdded ? 'active-heart' : ''}`}
                                 onClick={(e) => {
