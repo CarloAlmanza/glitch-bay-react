@@ -176,7 +176,7 @@ function CheckoutSummary() {
                                 </div>
                                 <div className="col-12 mt-4 d-grid">
                                     <button disabled={cart.length === 0} type="submit" className="btn cyber-btn w-100 py-3">
-                                        <span className="btn-shop-text text-uppercase tracking-wider fw-bold">Sgancia la grana</span>
+                                        <span className="btn-shop-text text-uppercase tracking-wider fw-bold">Conferma Acquisto</span>
                                     </button>
                                 </div>
                             </div>

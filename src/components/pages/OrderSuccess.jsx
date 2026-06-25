@@ -14,19 +14,19 @@ function OrderSuccess() {
                 </div>
 
                 <h2 className="cyber-title title-font mb-3">Protocollo Completato</h2>
-                <p className="fs-5 text-white-50 mb-5">La transazione sulla griglia è andata a buon fine. Collegamento sicuro stabilito.</p>
+                <p className="fs-5 text-white-50 mb-5">La transazione è andata a buon fine. Collegamento sicuro stabilito.</p>
                 
                 {order ? (
                     <div className="cyber-form p-4 my-4 mx-auto text-start text-white" style={{ maxWidth: '550px' }}>
                         <h4 className="title-font mb-4 text-info border-bottom border-secondary pb-2">Riepilogo Trasmissione:</h4>
                         
                         <div className="mb-3">
-                            <span className="text-white-50 small d-block">ID FATTURA / NUMERO ORDINE</span>
+                            <span className="text-white-50 small d-block">NUMERO ORDINE</span>
                             <strong className="fs-5 text-uppercase">#{order.invoiceNum}</strong>
                         </div>
 
                         <div className="mb-4">
-                            <span className="text-white-50 small d-block">CHIAVE DI TRACCIAMENTO / TRACKING</span>
+                            <span className="text-white-50 small d-block">TRACKING NODE</span>
                             <code className="text-warning fs-6 bg-dark px-2 py-1 rounded border border-secondary d-inline-block mt-1">
                                 {order.tracking_number}
                             </code>
@@ -41,7 +41,7 @@ function OrderSuccess() {
                     </div>
                 ) : (
                     <div className="cyber-total-box p-4 my-4 mx-auto text-white" style={{ maxWidth: '500px' }}>
-                        <p className="fs-5 m-0 fw-bold text-uppercase tracking-wider">Grazie per il tuo acquisto, Cyber-Cittadino!</p>
+                        <p className="fs-5 m-0 fw-bold text-uppercase tracking-wider">Grazie per il tuo acquisto!</p>
                     </div>
                 )}
 

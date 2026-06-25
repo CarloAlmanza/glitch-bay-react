@@ -2,7 +2,7 @@ import { Outlet, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useWishlist } from '../context/WishlistContext.jsx'; // Nuovo import
-import { HeartFill, Cart3, PlusCircle } from 'react-bootstrap-icons';
+import { HeartFill, Cart3} from 'react-bootstrap-icons';
 
 function Layout() {
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -24,10 +24,8 @@ function Layout() {
                     </Link>
 
                     <div className="d-none d-lg-flex gap-3 align-items-center">
-                        <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold">Pagina iniziale</Link>
+                        <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold">Home</Link>
                         <Link to="/products" className=" cyber-link text-white text-decoration-none fw-bold">I Nostri Prodotti</Link>
-
-
                         {/* Pulsante Wishlist Desktop */}
                         <span
                             className="btn position-relative p-font btn-preferiti"
