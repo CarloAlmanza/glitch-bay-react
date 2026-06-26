@@ -30,27 +30,64 @@ function ProductCard({ product, displayed, viewMode }) {
     };
 
     return (
-        <div className="cyber-card w-100 d-flex flex-column justify-content-between">
+        <div className={`cyber-card w-100 d-flex ${isList ? 'flex-row align-items-center p-3 gap-3' : 'flex-column justify-content-between'}`}>
+            <Link
+                to={`/products/${product.slug}`}
+                className={`card-body d-flex text-decoration-none h-100 p-0 
+            ${isList
+                        ? 'flex-row align-items-center flex-grow-1 gap-3'
+                        : 'flex-column'}`}>
+                <img
+                    src={product.img}
+                    alt="product-img"
+                    className={`img-fluid product-img ${isList ? 'mb-0' : 'mb-3'}`}
+                    style={isList ? { width: '180px', height: '110px', objectFit: 'cover', borderRadius: '8px', flexShrink: 0 } : {}}
+                />
+                <div className={`d-flex flex-column flex-grow-1 ${isList ? 'justify-content-center align-items-center' : ''}`}>
 
-            <Link to={`/products/${product.slug}`} className="card-body d-flex flex-column text-decoration-none h-100">
-                <img src={product.img} alt="product-img" className="img-fluid mb-3 product-img" />
-                <h5 className="card-title p-font prod-name-wrapper">{product.name}</h5>
+                    <div className="d-flex align-items-center justify-content-center gap-2 mb-1 w-100">
+                        <h5 className="card-title p-font prod-name-wrapper mb-0 text-center text-white">{product.name}</h5>
 
-                <div className="price-wrapper p-font mt-auto mb-2 d-flex justify-content-center align-items-center">
-                    {hasDiscount ? (
-                        <div className="price-box">
-                            <h5 className="text-decoration-line-through cut-price">
-                                {product.price}€
-                            </h5>
-                            <h3 className="">{product.discounted_price}€</h3>
-                        </div>
-                    ) : (
-                        <h3 className="">{product.price}€</h3>
+                        {isList && product.category && (
+                            /* Sostituito bg-secondary con uno sfondo personalizzato rgba semitrasparente */
+                            <span className="badge text-uppercase p-font"
+                                style={{
+                                    fontSize: '0.75rem',
+                                    whiteSpace: 'nowrap',
+                                    backgroundColor: 'rgba(255, 255, 255, 0.15)', // Trasparenza al 15%
+                                    color: '#fff',
+                                    border: '1px solid rgba(255, 255, 255, 0.25)' // Bordino leggero per non farlo sparire
+                                }}>
+                                {product.category}
+                            </span>
+                        )}
+                    </div>
+
+                    {isList && product.description && (
+                        <p className="text-white small mb-2 text-center text-truncate-2-lines"
+                            style={{ display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical', overflow: 'hidden', color: '#fff' }}>
+                            {product.description}
+                        </p>
                     )}
+
+                    <div className={`price-wrapper p-font d-flex align-items-center justify-content-center w-100 ${isList ? 'mt-1' : 'mt-auto mb-2'}`}>
+                        {hasDiscount ? (
+                            <div className="price-box d-flex align-items-center gap-2">
+                                <h5 className="text-decoration-line-through cut-price mb-0" style={isList ? { fontSize: '1rem' } : {}}>
+                                    {product.price}€
+                                </h5>
+                                <h3 className="mb-0" style={isList ? { fontSize: '1.4rem' } : {}}>{product.discounted_price}€</h3>
+                            </div>
+                        ) : (
+                            <h3 className="mb-0" style={isList ? { fontSize: '1.4rem' } : {}}>{product.price}€</h3>
+                        )}
+                    </div>
                 </div>
             </Link>
 
-            <div className="card-actions px-3 pb-3 mt-auto d-flex gap-2">
+            <div
+                className={`card-actions d-flex gap-2 align-items-center justify-content-end ${isList ? 'col-2 p-0' : 'px-3 pb-3 mt-auto'
+                    }`}>
                 {displayed !== 'product-detail' && (
                     /* Pulsante Cuore con Toggle e classe condizionale per l'animazione neon */
                     <button

@@ -175,8 +175,6 @@ function Layout() {
                                             className="btn btn-outline-danger btn-sm w-100"
                                             onClick={() => addWishHandler(item)}
                                         >
-
-                                            Rimuovi
                                             <Trash size={16} className="me-2" />
                                         </button>
                                     </div>
