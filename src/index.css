@@ -1105,3 +1105,11 @@
   }
 }
 
+@media screen and (min-width: 992px) {
+  .btn-preferiti, .btn-carrello {
+    transform: none;
+  }
+
+
+}
+

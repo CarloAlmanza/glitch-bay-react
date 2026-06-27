@@ -27,7 +27,7 @@ function Layout() {
                         <img src="/imgs/glitch-bay-logo.png" alt="Logo" className="logo" />
                     </Link>
 
-                    <div className="d-none d-lg-flex gap-3 align-items-center">
+                    <div className="nav-icons-desktop d-none d-lg-flex gap-3 align-items-center">
                         <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold">Home</Link>
                         <Link to="/products" className=" cyber-link text-white text-decoration-none fw-bold">I Nostri Prodotti</Link>
                         {/* Pulsante Wishlist Desktop */}
