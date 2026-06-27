@@ -188,7 +188,7 @@ function OurProducts() {
                             </button>
                         )}
                     </div>
-                    {windowSize >= 768 && (<div className="col-12 col-md-2 justify-content-md-end justify-content-center d-flex">
+                    {windowSize >= 768 && (<div className="col-12 col-md-2 justify-content-center d-flex">
                         <div className="btn-group" role="group" aria-label="Visualizzazione prodotti">
                             <button
                                 type="button"
