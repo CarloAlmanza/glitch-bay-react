@@ -300,11 +300,11 @@
 /* BOTTONE SCROLL UP*/
 
 .btn-scroll-wrapper {
-   z-index: 10;
-   height: 6vh;
-   width: 6vw;
-   bottom: 22px;
-   right: 7px;
+  z-index: 10;
+  height: 6vh;
+  width: 6vw;
+  bottom: 22px;
+  right: 7px;
 }
 
 .btn-scroll-up {
@@ -429,8 +429,7 @@
 
 .cut-price {
   opacity: 0.7;
-  translate: -110% 20%;
-  position: absolute;
+  translate: -50% 20%;
 }
 
 .product-img {
@@ -654,9 +653,6 @@
   flex: 1 1 300px;
 }
 
-.price-box {
-  position: relative;
-}
 
 /* Effetto Neon per il Cuore Attivo */
 .explore-btn.active-heart {
@@ -790,15 +786,53 @@
     -2px 0 #ff00ff;
 }
 
-.cyber-card-item {
-  background: white !important;
+/* VERSIONE PIÙ CHIARA DELLA CYBER-CARD */
+.cyber-card-light {
+  text-align: center;
+  border-radius: 10px;
+  padding: 13px;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-image: linear-gradient(
+    to bottom, 
+    rgb(103, 222, 202),  /* Chiaro e luminoso sopra */
+    rgba(100, 210, 240, 0.6)    /* Più scuro e saturo sotto */
+  );
+  border: 1px solid rgba(255, 255, 255, 0.4); /* Opzionale: un bordino chiaro per dare definizione */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Un'ombra leggera per sollevarla dal fondo */
+
+}
 
 
+.cyber-card-light:hover {
+  transform: translateY(-5px);
+  border-color: #00ffb7;
+  box-shadow: 0px 5px 18px rgba(0, 255, 183, 0.5);
+}
 
-  box-shadow:
-    0 0 10px rgba(0, 255, 255, .15);
+.trash-box-side {
+  border: 1px solid rgb(87, 11, 179);
+  color: rgb(87, 11, 179);
+  background-color: #00000000;
+  border-radius: 8px;
+  padding: 4px 12px;
+}
 
-  transition: .3s;
+.trash-box-side svg {
+  transition: all 0.3s ease-in-out;
+}
+
+.trash-box-side:hover svg {
+  color: #9c00fd;
+  filter: drop-shadow(0px 0px 4px #7700ff) drop-shadow(0px 0px 8px rgba(170, 0, 255, 0.57));
+}
+
+.text-shadow{
+  text-shadow:1px 1px 8px #09ff00e3 ;
+  color: white !important;
 }
 
 .cyber-card-item:hover {
@@ -1072,6 +1106,20 @@
 }
 
 
+.no-scrollbar {
+  max-height: 90vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-top: 10px;
+}
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (min-width: 420px) {
   .sidebar {
     right: -350px;
@@ -1106,10 +1154,11 @@
 }
 
 @media screen and (min-width: 992px) {
-  .btn-preferiti, .btn-carrello {
+
+  .btn-preferiti,
+  .btn-carrello {
     transform: none;
   }
 
 
 }
-

@@ -144,17 +144,16 @@ function Layout() {
                     {wishList.length === 0 ? (
                         <p className="text-muted small">Non ci sono prodotti nella tua lista Preferiti</p>
                     ) : (
-                        <div className="wishlist-items" style={{ maxHeight: "70vh", overflowY: "auto" }}>
+                        <div className="wishlist-items no-scrollbar">
                             {wishList.map((item) => (
                                 <div
                                     key={item.slug}
-                                    className="card mb-3 bg-light border-info overflow-hidden    cyber-card-item"
+                                    className="card mb-3 overflow-hidden   cyber-card-light"
                                 >
                                     <Link
                                         to={`/products/${item.slug}`}
                                         className="text-decoration-none text-dark"
-                                        onClick={() => setIsWishlistOpen(false)}
-                                    >
+                                        onClick={() => setIsWishlistOpen(false)}>
                                         <img
                                             src={item.img}
                                             alt={item.name}
@@ -169,15 +168,15 @@ function Layout() {
                                         />
 
                                         <div className="card-body p-2">
-                                            <h6 className="card-title mb-0">
+                                            <h6 className="card-title text-shadow p-font mb-0">
                                                 {item.name}
                                             </h6>
                                         </div>
                                     </Link>
 
-                                    <div className="card-footer bg-white border-0">
+                                    <div className="card-footer border-0">
                                         <button
-                                            className="btn btn-outline-danger btn-sm w-100"
+                                            className=" trash-box-side btn-sm w-100"
                                             onClick={() => addWishHandler(item)}
                                         >
                                             <Trash size={16} className="me-2" />

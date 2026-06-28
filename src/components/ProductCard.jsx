@@ -71,7 +71,7 @@ function ProductCard({ product, displayed, viewMode }) {
 
                     <div className={`price-wrapper p-font d-flex align-items-center justify-content-center w-100 ${isList ? 'mt-1' : ''}`}>
                         {hasDiscount ? (
-                            <div className="price-box d-flex align-items-center gap-2">
+                            <div className="d-flex flex-column gap-2">
                                 <h5 className="text-decoration-line-through cut-price mb-0" style={isList ? { fontSize: '1rem' } : {}}>
                                     {product.price.toFixed(2).replace('.',',')}€
                                 </h5>
