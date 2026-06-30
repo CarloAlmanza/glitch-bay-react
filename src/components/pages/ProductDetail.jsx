@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { fetchSingle } from "../../utils/fetch.js"
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext.jsx";
 import { useWishlist } from "../../context/WishlistContext.jsx";
 import { Heart, HeartFill, Cart3, DashCircle, PlusCircle } from "react-bootstrap-icons"
@@ -12,18 +12,25 @@ function ProductDetail() {
         addToCart,
         increaseQuantity,
         decreaseQuantity } = useCart();
-
-    const cartItem = cart.find(
-        (item) => item.slug === product.slug
-    );
+    const navigate = useNavigate();
 
     const { wishList, setWishList, addWishHandler } = useWishlist();
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
     useEffect(() => {
-        fetchSingle(slug).then(product => {
-            setProduct(product);
-        })
-    }, [slug]);
+        const getProductBySlug = async () => {
+            const fetchedProduct = await fetchSingle(slug);
+            console.log(fetchedProduct);
+
+            if (!fetchedProduct) {
+                navigate('pro');
+            }
+            setProduct(fetchedProduct);
+        }
+        getProductBySlug()
+    }, [slug, navigate]);
+    const cartItem = cart.find(
+        (item) => item.slug === product.slug
+    );
     const hasDiscount = product.discounted_price && product.discounted_price !== product.price;
     const handleAddToCart = () => {
         const productToCart = {
@@ -68,9 +75,9 @@ function ProductDetail() {
                                 <>
 
                                     <h5 className="text-decoration-line-through cut-price-detail opacity-50">
-                                        ${product.price.toFixed(2).replace('.',',')}
+                                        ${product.price.toFixed(2).replace('.', ',')}
                                     </h5>
-                                    <h3>${product.discounted_price.toFixed(2).replace('.',',')}</h3>
+                                    <h3>${product.discounted_price.toFixed(2).replace('.', ',')}</h3>
                                 </>
                             ) : (
                                 <h3>${product.price}</h3>

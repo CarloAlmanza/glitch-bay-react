@@ -1021,6 +1021,19 @@
   align-items: center;
 
 }
+.my-class-btn{
+  color: rgb(0, 240, 255);
+  background-color: transparent !important;
+  line-height: 0;
+  border: none;
+  border-radius: 50% !important;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
 
 .qty-btn:hover {
   background-color: rgba(126, 236, 251, 0.837) !important;
@@ -1033,8 +1046,13 @@
 .qty-btn:hover i {
   color: #ff00a6d2;
   /* Ciano Neon: contrasta da dio con lo sfondo magenta del bottone! */
-
+  
   /* Applica il doppio drop-shadow direttamente all'elemento SVG generato dal componente */
+  filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
+}
+.my-class-btn:hover{
+  background-color: transparent !important;
+  color: #002affe9;
   filter: drop-shadow(0px 0px 4px #00ffee) drop-shadow(0px 0px 8px rgba(0, 255, 221, 0.57));
 }
 

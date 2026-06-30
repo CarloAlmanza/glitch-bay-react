@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useWishlist } from '../context/WishlistContext.jsx'; // Nuovo import
 import { HeartFill, Cart3 } from 'react-bootstrap-icons';
-import { Trash } from "react-bootstrap-icons";
+import { Trash, DashCircle, PlusCircle } from "react-bootstrap-icons";
 import { FaBoxOpen } from 'react-icons/fa';
 import { IoHome } from "react-icons/io5";
 
@@ -59,8 +59,8 @@ function Layout() {
 
                     {/* Controlli Mobile */}
                     <div className="nav-icons-mobile d-lg-none d-flex gap-md-2">
-                        <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><IoHome/></Link>    
-                        <Link to="/products" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><FaBoxOpen/></Link>
+                        <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><IoHome /></Link>
+                        <Link to="/items" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><FaBoxOpen /></Link>
                         {/* Bottone Preferiti */}
                         <button className="btn btn-sm btn-preferiti position-relative px-3" onClick={() => setIsWishlistOpen(true)}>
                             <HeartFill className='cuore-preferiti' />
@@ -97,22 +97,54 @@ function Layout() {
                         <p className="text-muted small">OH no! Non ci sono prodotti nel tuo carello.</p>
                     ) : (
                         <>
-                            <div className="cart-items" style={{ maxHeight: "95vh", overflowY: "auto" }}>
+                            <div className="cart-items no-scrollbar" style={{ maxHeight: "50vh", overflowY: "auto", }}>
                                 {cart.map((item) => (
                                     <div key={item.id} className="card mb-2 p-2 cyber-card-item">
-                                        <div className="d-flex justify-content-between align-items-center flex-wrap text-dark">
+                                        <div className="d-flex flex-column flex-wrap text-dark">
                                             <div style={{ maxWidth: '70%' }}>
                                                 <div className="fw-bold text-truncate small">{item.name}</div>
-                                                <div className="small text-muted">{item.quantity}x - €{item.price.toFixed(2).replace('.',',')}</div>
+                                                <div className="small text-muted">{item.quantity}x - €{item.price.toFixed(2).replace('.', ',')}</div>
                                             </div>
 
 
 
 
-                                            <button className="cyber-quantity-btn" onClick={() => increaseQuantity(item.slug)}>+</button>
-                                            <button className="cyber-quantity-btn" onClick={() => decreaseQuantity(item.slug)}>-</button>
-                                            <button className="btn btn-sm cyber-delete-btn" onClick={() => removeFromCart(item.slug)} style={{ padding: '2px 6px', fontSize: '0.75rem' }}>Elimina</button>
+                                            <div className="d-flex align-items-center gap-2 flex-grow-1">
+                                                <div
+                                                    className="d-flex align-items-center justify-content-between flex-grow-1 ms-auto cyber-qty-box "
+                                                    style={{
+                                                        border: '1px solid #00f0ff',
+                                                        borderRadius: '8px',
+                                                        padding: '4px 8px'
+                                                    }}
+                                                >
 
+                                                    <span className="fw-bold p-font qty-display">
+                                                        {item.quantity}
+                                                    </span>
+
+                                                    <button
+                                                        className="my-class-btn d-flex align-items-center justify-content-center p-0 fw-bold me-2"
+                                                        onClick={() => decreaseQuantity(item.slug)}
+                                                    >
+                                                        <DashCircle />
+                                                    </button>
+
+                                                    <button
+                                                        className="my-class-btn d-flex align-items-center justify-content-center p-0 fw-bold"
+                                                        onClick={() => increaseQuantity(item.slug)}
+                                                    >
+                                                        <PlusCircle />
+                                                    </button>
+                                                </div>
+                                                <button
+                                                    className="d-flex trash-box align-items-center justify-content-between ms-auto cyber-qty-box "
+                                                    onClick={() => removeFromCart(item.slug)}
+                                                    title="Rimuovi dal carrello"
+                                                >
+                                                    <Trash size={18} />
+                                                </button>
+                                            </div>
 
 
                                         </div>
@@ -122,12 +154,12 @@ function Layout() {
                             <hr className="text-dark" />
                             <div className="d-flex justify-content-between align-items-center text-dark mb-3">
                                 <span>TOTAL:</span>
-                                <span className="fw-bold text-success">€{totalPrice}</span>
+                                <span className="fw-bold cyber-title fs-5">€{totalPrice.toFixed(2).replace('.', ',')}</span>
                             </div>
                             <Link to="checkout">
                                 <button className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
                             </Link>
-                            <button className="cyber-reset-btn w-100 w-100 " onClick={clearCart}>Svuota Carrello</button>
+                            <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
                         </>
                     )}
                 </div>
@@ -151,7 +183,7 @@ function Layout() {
                                     className="card mb-3 overflow-hidden   cyber-card-light"
                                 >
                                     <Link
-                                        to={`/products/${item.slug}`}
+                                        to={`/items/${item.slug}`}
                                         className="text-decoration-none text-dark"
                                         onClick={() => setIsWishlistOpen(false)}>
                                         <img
