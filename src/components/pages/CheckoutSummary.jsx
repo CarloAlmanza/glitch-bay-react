@@ -126,7 +126,7 @@ function CheckoutSummary() {
     }
 
     return (
-        <div className="products-page min-vh-100 py-5">
+        <div className="products-page min-vh-100">
             <div className="container p-font">
                 <h2 className="title-font text-center mb-5 cyber-title">Riepilogo Ordine</h2>
 
@@ -182,6 +182,9 @@ function CheckoutSummary() {
                             <div className="col-12">
                                 <span className="text-info small tracking-wider text-uppercase fw-bold block mb-2 d-block">
                                     <i className="bi bi-postcard pe-2"></i>Informazioni di consegna
+                                </span>
+                                <span className="text-danger small tracking-wider text-uppercase fw-bold block mb-2 d-block">
+                                    *tutti i campi sono obbligatori
                                 </span>
                             </div>
                             <div className="row g-3">

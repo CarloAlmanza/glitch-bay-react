@@ -123,7 +123,7 @@
   position: fixed;
   aspect-ratio: 1;
   z-index: 15;
-  bottom: 4%;
+  bottom: 35px;
   left: 8px;
   width: 50px;
   height: 50px;
@@ -425,7 +425,7 @@
   z-index: 10;
   height: 50px;
   width: 50px;
-  bottom: 46px;
+  bottom: 35px;
   right: 3px;
 }
 
@@ -509,6 +509,7 @@
 
 .products-page {
   background-image: url('/imgs/img_background_glitch/background_img_stars.avif');
+  padding: 48px 0px 100px !important;
 }
 
 /* .products-wrapper {
