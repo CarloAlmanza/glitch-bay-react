@@ -714,6 +714,9 @@
   border-radius: 6px;
   transition: all 0.2s ease-in-out;
 }
+.cyber-input::placeholder {
+  color: white !important;
+}
 
 /* Icona di ricerca del gruppo di input */
 .cyber-controls-bar .cyber-addon {
