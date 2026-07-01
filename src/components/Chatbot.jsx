@@ -59,7 +59,13 @@ function Chatbot() {
             
             {/* Area Messaggi della Chat */}
             <div className="chat-messages-area flex-grow-1 overflow-y-auto mb-3 pe-1">
-                {history.map((msg, i) => {
+                {history.length === 0 && !loading ? <div className="w-100 h-100 d-flex flex-column justify-content-center align-items-center p-font">
+                                                        <div className="w-25">
+                                                            <img style={{translate: '10% 0'}} src="imgs/img_elements_glitch/cyber_fox.png" alt="cyber-fox" className="img-fluid"/>
+                                                        </div>
+                                                        <p className="chiedi-chatbot">Chiedi pure</p>
+                                                    </div> 
+                    : history.map((msg, i) => {
                     const isUser = msg.sender === 'user';
                     const textToShow = msg.text.text || msg.text;
 
@@ -77,9 +83,9 @@ function Chatbot() {
                             </div>
 
                             {msg.text.products && msg.text.products.length > 0 && (
-                                <div className="row g-2 w-100 mt-2 justify-content-start mb-2">
+                                <div className="row g-4 w-100 mt-2 justify-content-center mb-2">
                                     {msg.text.products.map(product => (
-                                        <div key={product.slug} className="col-12">
+                                        <div key={product.slug} className="col-12 d-flex justify-content-center">
                                             <ChatCard product={product} clickHandler={handleOnClose} />
                                         </div>
                                     ))}
