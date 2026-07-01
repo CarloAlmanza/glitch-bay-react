@@ -1,4 +1,4 @@
-import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Outlet, Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext.jsx';
 import { useWishlist } from '../context/WishlistContext.jsx'; // Nuovo import
@@ -9,7 +9,6 @@ import { IoHome } from "react-icons/io5";
 import Chatbot from '../components/Chatbot.jsx';
 
 function Layout() {
-    const location = useLocation();
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [isWishlistOpen, setIsWishlistOpen] = useState(false); // Stato per la seconda sidebar
 

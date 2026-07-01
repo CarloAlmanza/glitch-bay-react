@@ -122,7 +122,7 @@ function OurProducts() {
                 <BtnScrollUp />
             </div>
 
-            <main className="products-main container py-5">
+            <main className="products-main container">
 
                 <section className="row g-3 justify-content-center mb-5 cyber-controls-bar align-items-center">
 

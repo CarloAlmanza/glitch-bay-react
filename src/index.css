@@ -124,7 +124,7 @@
   aspect-ratio: 1;
   z-index: 15;
   bottom: 4%;
-  left: 4px;
+  left: 8px;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -425,8 +425,8 @@
   z-index: 10;
   height: 50px;
   width: 50px;
-  bottom: 22px;
-  right: 0;
+  bottom: 46px;
+  right: 3px;
 }
 
 .btn-scroll-up {
@@ -504,7 +504,7 @@
 
 /* Products */
 .products-main {
-  padding: 0 20px;
+  padding: 48px 20px 180px !important;
 }
 
 .products-page {

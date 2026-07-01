@@ -14,7 +14,7 @@ function ProductDetail() {
         decreaseQuantity } = useCart();
     const navigate = useNavigate();
 
-    const { wishList, setWishList, addWishHandler } = useWishlist();
+    const { wishList, addWishHandler } = useWishlist();
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
     useEffect(() => {
         const getProductBySlug = async () => {
