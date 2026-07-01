@@ -12,7 +12,7 @@ function ProductCard({ product, displayed, viewMode }) {
         decreaseQuantity,
         removeFromCart
     } = useCart();
-    const { wishList, setWishList, addWishHandler } = useWishlist();
+    const { wishList, addWishHandler } = useWishlist();
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
 
     const cartItem = cart.find(

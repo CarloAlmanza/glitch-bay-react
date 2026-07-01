@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-function ProductList({ products, displayed, viewMode }) {
+function ProductList({ products, viewMode }) {
     return (
         <div className="row g-4">
             {products.map((product) => (

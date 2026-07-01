@@ -6,6 +6,7 @@ import { useWishlist } from "../../context/WishlistContext.jsx";
 import { Heart, HeartFill, Cart3, DashCircle, PlusCircle } from "react-bootstrap-icons"
 
 function ProductDetail() {
+    const [isZooming, setIsZooming] = useState(false);
     const [product, setProduct] = useState([]);
     const { slug } = useParams();
     const { cart,
@@ -14,7 +15,7 @@ function ProductDetail() {
         decreaseQuantity } = useCart();
     const navigate = useNavigate();
 
-    const { wishList, setWishList, addWishHandler } = useWishlist();
+    const { wishList, addWishHandler } = useWishlist();
     const isAdded = Array.isArray(wishList) && wishList.some((item) => item.slug === product.slug);
     useEffect(() => {
         const getProductBySlug = async () => {
@@ -45,8 +46,13 @@ function ProductDetail() {
                 <div className="row align-items-center">
                     <div className="col-lg-6 text-center">
                         <div
-                            className="amazon-lens-container"
+                            className={`amazon-lens-container ${isZooming ? 'is-zooming' : ''}`}
+                            onClick={() => setIsZooming(!isZooming)} // Inverte lo stato ad ogni click
+                            onMouseLeave={() => setIsZooming(false)} // Disattiva lo zoom se il mouse esce dal rettangolo
+                            onMouseDown={(e) => e.preventDefault()}
                             onMouseMove={(e) => {
+                                if (!isZooming) return; // Calcola la posizione solo se lo zoom è attivo
+
                                 const container = e.currentTarget;
                                 const { left, top, width, height } = container.getBoundingClientRect();
                                 const x = ((e.clientX - left) / width) * 100;

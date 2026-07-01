@@ -123,8 +123,8 @@
   position: fixed;
   aspect-ratio: 1;
   z-index: 20;
-  bottom: 4%;
-  left: 4px;
+  bottom: 35px;
+  left: 8px;
   width: 50px;
   height: 50px;
   text-align: center;
@@ -436,8 +436,8 @@
   z-index: 20;
   height: 50px;
   width: 50px;
-  bottom: 22px;
-  right: 0;
+  bottom: 35px;
+  right: 3px;
 }
 
 .btn-scroll-up {
@@ -515,11 +515,12 @@
 
 /* Products */
 .products-main {
-  padding: 0 20px;
+  padding: 48px 20px 180px !important;
 }
 
 .products-page {
   background-image: url('/imgs/img_background_glitch/background_img_stars.avif');
+  padding: 48px 0px 100px !important;
 }
 
 /* .products-wrapper {
@@ -641,13 +642,9 @@
   object-fit: contain;
   transition: .3s;
   border-radius: 30px;
-  cursor: pointer;
   padding: 20px
 }
 
-.cyber-img:hover {
-  transform: scale(1.05);
-}
 
 .cyber-title {
   color: #00ffff;
@@ -1227,7 +1224,7 @@
   border-radius: 30px;
   display: inline-block;
   width: 100%;
-  cursor: crosshair;
+  cursor: zoom-in;
 }
 
 .amazon-lens-container .cyber-img {
@@ -1255,12 +1252,17 @@
 }
 
 
-.amazon-lens-container:hover .amazon-lens {
+.amazon-lens-container.is-zooming .amazon-lens {
   opacity: 1;
+  cursor: zoom-out
 }
 
-.amazon-lens-container:hover .cyber-img {
+.amazon-lens-container.is-zooming .cyber-img {
   opacity: 0;
+}
+
+.amazon-lens-container.is-zooming {
+  cursor: zoom-out; /* ◄ Lente con il meno (-) */
 }
 
 
