@@ -158,9 +158,11 @@ function Layout() {
                                 <span className="fw-bold cyber-title fs-5">€{totalPrice.toFixed(2).replace('.', ',')}</span>
                             </div>
                             <Link to="checkout">
-                                <button className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
+                                <button onClick={() => setIsCartOpen(false)} className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
                             </Link>
-                            <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
+                            <Link onClick={() => setIsCartOpen(false)} to="/">
+                                <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
+                            </Link>
                         </>
                     )}
                 </div>
@@ -223,9 +225,9 @@ function Layout() {
             </nav >
 
             <main>
-                
-                    <Chatbot/>
-                
+
+                <Chatbot />
+
                 <Outlet />
             </main>
         </div >
