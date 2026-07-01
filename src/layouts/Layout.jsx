@@ -61,7 +61,7 @@ function Layout() {
                     {/* Controlli Mobile */}
                     <div className="nav-icons-mobile d-lg-none d-flex gap-md-2">
                         <Link to="/" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><IoHome /></Link>
-                        <Link to="/items" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><FaBoxOpen /></Link>
+                        <Link to="/products" className=" cyber-link text-white text-decoration-none fw-bold d-lg-none"><FaBoxOpen /></Link>
                         {/* Bottone Preferiti */}
                         <button className="btn btn-sm btn-preferiti position-relative px-3" onClick={() => setIsWishlistOpen(true)}>
                             <HeartFill className='cuore-preferiti' />
@@ -158,9 +158,11 @@ function Layout() {
                                 <span className="fw-bold cyber-title fs-5">€{totalPrice.toFixed(2).replace('.', ',')}</span>
                             </div>
                             <Link to="checkout">
-                                <button className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
+                                <button onClick={() => setIsCartOpen(false)} className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
                             </Link>
-                            <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
+                            <Link onClick={() => setIsCartOpen(false)} to="/">
+                                <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
+                            </Link>
                         </>
                     )}
                 </div>
@@ -184,7 +186,7 @@ function Layout() {
                                     className="card mb-3 overflow-hidden   cyber-card-light"
                                 >
                                     <Link
-                                        to={`/items/${item.slug}`}
+                                        to={`/products/${item.slug}`}
                                         className="text-decoration-none text-dark"
                                         onClick={() => setIsWishlistOpen(false)}>
                                         <img
@@ -223,9 +225,9 @@ function Layout() {
             </nav >
 
             <main>
-                
-                    <Chatbot/>
-                
+
+                <Chatbot />
+
                 <Outlet />
             </main>
         </div >

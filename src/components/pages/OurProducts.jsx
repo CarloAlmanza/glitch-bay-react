@@ -132,7 +132,7 @@ function OurProducts() {
                             <span className="input-group-text cyber-addon"><i className="bi bi-search"></i></span>
                             <input
                                 type="text"
-                                placeholder="Cerca hardware..."
+                                placeholder="Cerca prodotto..."
                                 value={searchQuery}
                                 onChange={(e) => updateSearchParams("search", e.target.value)}
                                 className="form-control cyber-input p-font"
