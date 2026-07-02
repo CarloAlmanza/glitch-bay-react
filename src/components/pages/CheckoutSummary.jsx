@@ -174,6 +174,12 @@ function CheckoutSummary() {
                         <div className="cyber-total-box mt-4 p-4 text-center">
                             <h3 className="cyber-title m-0">Totale: €{totalPrice.toFixed(2)}</h3>
                         </div>
+                        <div className='mt-3 text-center'>
+                        <span className="text-info small opacity-75 tracking-wider text-uppercase fw-bold block mb-2 d-block">
+                            *spedizione gratuita per gli ordini sopra 250&euro;
+                        </span>
+                        </div>
+                            
                     </div>
 
                     <div className="col-12 col-lg-6">
@@ -183,7 +189,7 @@ function CheckoutSummary() {
                                 <span className="text-info small tracking-wider text-uppercase fw-bold block mb-2 d-block">
                                     <i className="bi bi-postcard pe-2"></i>Informazioni di consegna
                                 </span>
-                                <span className="text-danger small tracking-wider text-uppercase fw-bold block mb-2 d-block">
+                                <span className="text-danger opacity-75 small tracking-wider text-uppercase fw-bold block mb-2 d-block">
                                     *tutti i campi sono obbligatori
                                 </span>
                             </div>

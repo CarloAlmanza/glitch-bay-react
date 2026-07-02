@@ -156,9 +156,7 @@ function Layout() {
                             <Link to="checkout">
                                 <button onClick={() => setIsCartOpen(false)} className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>
                             </Link>
-                            <Link onClick={() => setIsCartOpen(false)} to="/">
-                                <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={clearCart}>Svuota Carrello</button>
-                            </Link>
+                                <button className="cyber-reset-btn w-100 fs-5 text-black" onClick={() => {setIsCartOpen(false);clearCart()}}>Svuota Carrello</button>
                         </>
                     )}
                 </div>
