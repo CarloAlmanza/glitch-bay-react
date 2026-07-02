@@ -105,7 +105,7 @@ function Layout() {
                                         <div className="d-flex flex-column flex-wrap text-dark">
                                             <div style={{ maxWidth: '70%' }}>
                                                 <div className="fw-bold text-truncate small">{item.name}</div>
-                                                <div className="small text-muted">{item.quantity}x - €{item.price.toFixed(2).replace('.', ',')}</div>
+                                                <div className="small text-muted">{item.quantity}x - {item.price.toFixed(2).replace('.', ',')}&euro;</div>
                                             </div>
 
 
@@ -151,7 +151,7 @@ function Layout() {
                             <hr className="text-dark" />
                             <div className="d-flex justify-content-between align-items-center text-dark mb-3">
                                 <span>TOTAL:</span>
-                                <span className="fw-bold cyber-title fs-5">€{totalPrice.toFixed(2).replace('.', ',')}</span>
+                                <span className="fw-bold cyber-title fs-5">{totalPrice.toFixed(2).replace('.', ',')}&euro;</span>
                             </div>
                             <Link to="checkout">
                                 <button onClick={() => setIsCartOpen(false)} className="cyber-checkout-btn w-100 mb-2 ">VAI AL PAGAMENTO</button>

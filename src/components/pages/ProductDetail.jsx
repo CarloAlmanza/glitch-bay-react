@@ -81,12 +81,12 @@ function ProductDetail() {
                                 <>
 
                                     <h5 className="text-decoration-line-through cut-price-detail opacity-50">
-                                        ${product.price.toFixed(2).replace('.', ',')}
+                                        {product.price.toFixed(2).replace('.', ',')}&euro;
                                     </h5>
-                                    <h3>${product.discounted_price.toFixed(2).replace('.', ',')}</h3>
+                                    <h3>{product.discounted_price.toFixed(2).replace('.', ',')}&euro;</h3>
                                 </>
                             ) : (
-                                <h3>${product.price}</h3>
+                                <h3>{product.price?.toFixed(2).replace('.',',')}&euro;</h3>
                             )}
                         </div>
                         <div className="cyber-line"></div>

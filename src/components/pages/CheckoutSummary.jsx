@@ -140,7 +140,7 @@ function CheckoutSummary() {
                                         <div className="d-flex justify-content-between align-items-center text-white">
                                             <div className="pe-2 text-truncate max-w-60">
                                                 <div className="fw-bold text-truncate small text-info">{item.name}</div>
-                                                <div className="small opacity-75">{item.quantity}x — €{item.price}</div>
+                                                <div className="small opacity-75">{item.quantity}x — {item.price}&euro;</div>
                                             </div>
                                             <div className="d-flex align-items-center gap-1">
                                                 <button
@@ -172,7 +172,7 @@ function CheckoutSummary() {
                         </div>
 
                         <div className="cyber-total-box mt-4 p-4 text-center">
-                            <h3 className="cyber-title m-0">Totale: €{totalPrice.toFixed(2)}</h3>
+                            <h3 className="cyber-title m-0">Totale: {totalPrice.toFixed(2).replace('.', ',')}&euro;</h3>
                         </div>
                         <div className='mt-3 text-center'>
                         <span className="text-info small opacity-75 tracking-wider text-uppercase fw-bold block mb-2 d-block">
