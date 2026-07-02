@@ -94,7 +94,7 @@ function Layout() {
                     <button className="close-btn" onClick={() => setIsCartOpen(false)}>×</button>
                 </div>
                 <div className="cart-section p-font">
-                    <h5 className="text-dark mb-3">I tuoi Prodotti:</h5>
+                    <h5 className="text-dark mb-3 text-uppercase">I tuoi Prodotti:</h5>
                     {cart.length === 0 ? (
                         <p className="text-muted small">OH no! Non ci sono prodotti nel tuo carello.</p>
                     ) : (
@@ -150,7 +150,7 @@ function Layout() {
                             </div>
                             <hr className="text-dark" />
                             <div className="d-flex justify-content-between align-items-center text-dark mb-3">
-                                <span>TOTAL:</span>
+                                <span className='p-font fw-bold text-black'>TOTALE:</span>
                                 <span className="fw-bold cyber-title fs-5">{totalPrice.toFixed(2).replace('.', ',')}&euro;</span>
                             </div>
                             <Link to="checkout">
